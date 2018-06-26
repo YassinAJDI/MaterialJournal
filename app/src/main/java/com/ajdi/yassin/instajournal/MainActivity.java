@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
                     // Choose authentication providers
                     List<AuthUI.IdpConfig> providers = Arrays.asList(
                             new AuthUI.IdpConfig.EmailBuilder().build(),
-                            new AuthUI.IdpConfig.PhoneBuilder().build(),
                             new AuthUI.IdpConfig.GoogleBuilder().build());
 
                     // Create and launch sign-in intent
@@ -95,6 +94,21 @@ public class MainActivity extends AppCompatActivity {
                 Timber.d("Sign-in error: " + response.getError());
             }
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mAuthStateListener != null) {
+            mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
+        }
+        detachDatabaseReadListener();
     }
 
     private void showSnackbar(String s) {
