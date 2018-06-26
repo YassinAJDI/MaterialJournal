@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">InstaJournal</string>
+
+    <!--actions-->
+    <string name="action_add_notes">Add a Note item +</string>
+    <string name="action_refresh">Refresh</string>
+
 </resources>
