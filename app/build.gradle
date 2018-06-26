@@ -17,6 +17,11 @@ android {
         }
     }
 
+    // Enable databinding
+    dataBinding {
+        enabled = true
+    }
+
     defaultConfig {
         resConfigs "en" // For FirebaseUI
     }
