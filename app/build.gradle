@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    defaultConfig {
+        resConfigs "en" // For FirebaseUI
+    }
 }
 
 dependencies {
@@ -27,6 +31,7 @@ dependencies {
 
     // Firebase
     implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.firebaseui:firebase-ui-auth:4.0.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
