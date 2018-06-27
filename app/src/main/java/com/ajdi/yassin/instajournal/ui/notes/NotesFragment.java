@@ -22,6 +22,8 @@ public class NotesFragment extends Fragment {
 
     private NotesViewModel mNotesViewModel;
 
+    private NotesAdapter mNotesAdapter;
+
     private FragmentNotesBinding mFragmentNotesBinding;
 
     public NotesFragment() {
@@ -63,9 +65,10 @@ public class NotesFragment extends Fragment {
 
     private void setupListAdapter() {
         RecyclerView recyclerView = mFragmentNotesBinding.recyclerNoteList;
-
         recyclerView.setLayoutManager(new LinearLayoutManager(
                 getActivity(), LinearLayoutManager.VERTICAL, false));
+
+        mNotesAdapter = new NotesAdapter();
 
         recyclerView.setAdapter(null);
     }

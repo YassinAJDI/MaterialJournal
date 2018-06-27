@@ -28,4 +28,7 @@ public class NotesRepository {
     public static void destroyInstance() {
         INSTANCE = null;
     }
+
+    public void refreshNotes() {
+    }
 }

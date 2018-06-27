@@ -30,5 +30,20 @@ public class NotesViewModel extends AndroidViewModel {
     }
 
     public void start() {
+        loadNotes(false);
+    }
+
+    private void loadNotes(boolean forceUpdate) {
+        loadNotes(false, true);
+    }
+
+    private void loadNotes(boolean forceUpdate, boolean showLoadingUI) {
+        if (showLoadingUI){
+            // TODO: 27/06/2018 show loading
+        }
+        if (forceUpdate){
+            mNotesRepository.refreshNotes();
+        }
+
     }
 }
