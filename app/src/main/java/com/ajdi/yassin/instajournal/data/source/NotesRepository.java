@@ -1,6 +1,8 @@
 package com.ajdi.yassin.instajournal.data.source;
 
-public class NotesRepository {
+import android.support.annotation.NonNull;
+
+public class NotesRepository implements NotesDataSource {
 
     private volatile static NotesRepository INSTANCE = null;
 
@@ -30,5 +32,10 @@ public class NotesRepository {
     }
 
     public void refreshNotes() {
+    }
+
+    @Override
+    public void getNotes(@NonNull LoadNotesCallback callback) {
+
     }
 }

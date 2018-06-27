@@ -8,7 +8,11 @@ import android.databinding.ObservableList;
 import android.support.annotation.NonNull;
 
 import com.ajdi.yassin.instajournal.data.model.Note;
+import com.ajdi.yassin.instajournal.data.source.NotesDataSource;
 import com.ajdi.yassin.instajournal.data.source.NotesRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Exposes the data to be used in the notes list screen.
@@ -37,13 +41,33 @@ public class NotesViewModel extends AndroidViewModel {
         loadNotes(false, true);
     }
 
-    private void loadNotes(boolean forceUpdate, boolean showLoadingUI) {
-        if (showLoadingUI){
+    private void loadNotes(boolean forceUpdate, final boolean showLoadingUI) {
+        if (showLoadingUI) {
             // TODO: 27/06/2018 show loading
         }
-        if (forceUpdate){
+        if (forceUpdate) {
             mNotesRepository.refreshNotes();
         }
+
+        mNotesRepository.getNotes(new NotesDataSource.LoadNotesCallback() {
+            @Override
+            public void onNotesLoaded(List<Note> notes) {
+                List<Note> notesToShow = new ArrayList<>();
+
+
+                if (showLoadingUI) {
+                    // TODO: 27/06/2018 stop loading
+                }
+
+                notes.clear();
+                notes.addAll(notesToShow);
+            }
+
+            @Override
+            public void onDataNotAvailable() {
+
+            }
+        });
 
     }
 }
