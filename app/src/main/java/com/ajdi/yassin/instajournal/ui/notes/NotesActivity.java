@@ -1,6 +1,7 @@
 package com.ajdi.yassin.instajournal.ui.notes;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -40,5 +41,9 @@ public class NotesActivity extends AppCompatActivity {
             ActivityUtils.replaceFragmentInActivity(fragmentManager,
                     mNotesFragment, R.id.fragment_container);
         }
+    }
+
+    public static NotesViewModel obtainViewModel(FragmentActivity activity) {
+        return null;
     }
 }

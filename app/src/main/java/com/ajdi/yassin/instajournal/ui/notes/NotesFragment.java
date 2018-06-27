@@ -37,7 +37,7 @@ public class NotesFragment extends Fragment {
         mFragmentNotesBinding = FragmentNotesBinding.inflate(inflater, container,
                 false);
 
-        //mFeedsViewModel = FeedsActivity.obtainViewModel(getActivity());
+        mNotesViewModel = NotesActivity.obtainViewModel(getActivity());
 
         //mFragmentNotesBinding.setViewmodel(mFeedsViewModel);
 
