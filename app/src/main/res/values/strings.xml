@@ -8,4 +8,7 @@
     <string name="action_add_notes">Add a Note item +</string>
     <string name="action_refresh">Refresh</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
