@@ -2,18 +2,17 @@ package com.ajdi.yassin.instajournal.ui.notes;
 
 
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.data.model.Note;
-import com.ajdi.yassin.instajournal.databinding.FragmentAddeditNoteBinding;
 import com.ajdi.yassin.instajournal.databinding.FragmentNotesBinding;
 
 /**
@@ -34,12 +33,6 @@ public class NotesFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mFragmentNotesBinding = FragmentNotesBinding.inflate(inflater, container,
                 false);
@@ -56,11 +49,25 @@ public class NotesFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        
+
         setupFab();
+
+        setupListAdapter();
+    }
+
+    private void setupListAdapter() {
+        RecyclerView recyclerView = mFragmentNotesBinding.recyclerNoteList;
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(
+                getActivity(), LinearLayoutManager.VERTICAL, false));
+
+        recyclerView.setAdapter(null);
     }
 
     private void setupFab() {
+        if (getActivity() == null)
+            return;
+
         FloatingActionButton fab = getActivity().findViewById(R.id.fab_add_note);
 
         fab.setImageResource(R.drawable.ic_add_black_24dp);
