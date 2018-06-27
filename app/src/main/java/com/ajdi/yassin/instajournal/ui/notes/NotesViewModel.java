@@ -1,4 +1,31 @@
 package com.ajdi.yassin.instajournal.ui.notes;
 
-public class NotesViewModel {
+import android.app.Application;
+import android.arch.lifecycle.AndroidViewModel;
+import android.content.Context;
+import android.databinding.ObservableArrayList;
+import android.databinding.ObservableList;
+import android.support.annotation.NonNull;
+
+import com.ajdi.yassin.instajournal.data.model.Note;
+import com.ajdi.yassin.instajournal.data.source.NotesRepository;
+
+/**
+ * Exposes the data to be used in the notes list screen.
+ */
+public class NotesViewModel extends AndroidViewModel {
+
+    // These observable fields will update Views automatically
+    public final ObservableList<Note> notes = new ObservableArrayList<>();
+
+    private final NotesRepository mNotesRepository;
+
+    private final Context mContext;
+
+    public NotesViewModel(@NonNull Application context, NotesRepository repository) {
+        super(context);
+
+        mContext = context.getApplicationContext(); // Force use of Application Context.
+        mNotesRepository = repository;
+    }
 }
