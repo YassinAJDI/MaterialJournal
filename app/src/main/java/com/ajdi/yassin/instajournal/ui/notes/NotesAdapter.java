@@ -17,8 +17,8 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private List<Note> mNotes;
 
     public NotesAdapter(List<Note> notes, NotesViewModel notesViewModel) {
-        this.mNotes = notes;
         mNotesViewModel = notesViewModel;
+        replaceData(notes);
     }
 
     @NonNull
@@ -65,7 +65,7 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
 
         public void bind(Note note) {
-            //binding.setNote(note);
+            binding.setNote(note);
             binding.executePendingBindings();
         }
     }
