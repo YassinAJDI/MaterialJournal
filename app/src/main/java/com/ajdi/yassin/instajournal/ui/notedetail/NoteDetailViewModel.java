@@ -13,13 +13,15 @@ import com.google.android.gms.tasks.Task;
 
 import javax.sql.DataSource;
 
-public class NoteDetailViewModel extends AndroidViewModel implements NotesDataSource.GetNoteCallback{
+public class NoteDetailViewModel extends AndroidViewModel implements NotesDataSource.GetNoteCallback {
 
     public final ObservableField<Note> note = new ObservableField<>();
 
     private final NotesRepository mNotesRepository;
 
     private final Context mContext;
+
+    private boolean mIsDataLoading;
 
     public NoteDetailViewModel(@NonNull Application context, NotesRepository repository) {
         super(context);
@@ -36,11 +38,16 @@ public class NoteDetailViewModel extends AndroidViewModel implements NotesDataSo
 
     @Override
     public void onNoteLoaded(Note note) {
-
+        setNote(note);
+        mIsDataLoading = false;
     }
 
     @Override
     public void onDataNotAvailable() {
+        // show message when data not available
+    }
 
+    public void setNote(Note note) {
+        this.note.set(note);
     }
 }
