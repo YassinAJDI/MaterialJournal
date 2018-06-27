@@ -2,21 +2,24 @@ package com.ajdi.yassin.instajournal.ui.notedetail;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.ajdi.yassin.instajournal.R;
+import com.ajdi.yassin.instajournal.databinding.FragmentNoteDetailBinding;
+import com.ajdi.yassin.instajournal.ui.notes.NotesActivity;
 
 public class NoteDetailFragment extends Fragment {
 
     public static final String ARGUMENT_NOTE_ID = "NOTE_ID";
 
-    public static final int REQUEST_EDIT_TASK = 1;
+    public static final int REQUEST_EDIT_NOTE = 1;
 
-    //private TaskDetailViewModel mViewModel;
+    private NoteDetailViewModel mNoteDetailViewModel;
 
     public NoteDetailFragment() {
         // Required empty public constructor
@@ -31,17 +34,35 @@ public class NoteDetailFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        FragmentNoteDetailBinding binding = FragmentNoteDetailBinding.
+                inflate(inflater, container, false);
 
+        mNoteDetailViewModel = NoteDetailActivity.obtainViewModel(getActivity());
+        //binding.setViewmodel(mNotesViewModel);
+        binding.setLifecycleOwner(this);
+
+        setHasOptionsMenu(true);
+
+        return binding.getRoot();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        TextView textView = new TextView(getActivity());
-        textView.setText(R.string.hello_blank_fragment);
-        return textView;
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        setupFab();
     }
 
+    private void setupFab() {
+        FloatingActionButton fab = getActivity().findViewById(R.id.fab_edit_note);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //mViewModel.editTask();
+            }
+        });
+    }
 }
