@@ -13,6 +13,8 @@ import com.ajdi.yassin.instajournal.data.source.NotesRepository;
 
 import java.util.List;
 
+import timber.log.Timber;
+
 /**
  * Exposes the data to be used in the notes list screen.
  */
@@ -41,6 +43,7 @@ public class NotesViewModel extends AndroidViewModel {
     }
 
     private void loadNotes(boolean forceUpdate, final boolean showLoadingUI) {
+        Timber.d("Loading notes.");
         if (showLoadingUI) {
             // TODO: 27/06/2018 show loading
         }
@@ -51,6 +54,7 @@ public class NotesViewModel extends AndroidViewModel {
         mNotesRepository.getNotes(new NotesDataSource.LoadNotesCallback() {
             @Override
             public void onNotesLoaded(List<Note> notes) {
+                Timber.d("Notes loaded.");
                 //List<Note> notesToShow = new ArrayList<>();
 
 
