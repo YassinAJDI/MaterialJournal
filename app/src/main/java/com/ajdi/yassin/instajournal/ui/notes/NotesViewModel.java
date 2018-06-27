@@ -11,7 +11,6 @@ import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.data.source.NotesDataSource;
 import com.ajdi.yassin.instajournal.data.source.NotesRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,7 +19,7 @@ import java.util.List;
 public class NotesViewModel extends AndroidViewModel {
 
     // These observable fields will update Views automatically
-    public final ObservableList<Note> notes = new ObservableArrayList<>();
+    public final ObservableList<Note> items = new ObservableArrayList<>();
 
     private final NotesRepository mNotesRepository;
 
@@ -52,15 +51,15 @@ public class NotesViewModel extends AndroidViewModel {
         mNotesRepository.getNotes(new NotesDataSource.LoadNotesCallback() {
             @Override
             public void onNotesLoaded(List<Note> notes) {
-                List<Note> notesToShow = new ArrayList<>();
+                //List<Note> notesToShow = new ArrayList<>();
 
 
                 if (showLoadingUI) {
                     // TODO: 27/06/2018 stop loading
                 }
 
-                notes.clear();
-                notes.addAll(notesToShow);
+                items.clear();
+                items.addAll(notes);
             }
 
             @Override

@@ -56,7 +56,7 @@ public class NotesRepository implements NotesDataSource {
         // this is just for test purpose
 
         List<Note> notes = Arrays.asList(
-                new Note("Test1", "content1"),
+                new Note("Test 1", "content 1"),
                 new Note("Test 2", "content 2"),
                 new Note("Test 3", "content 3"),
                 new Note("Test 4", "content 4"),
