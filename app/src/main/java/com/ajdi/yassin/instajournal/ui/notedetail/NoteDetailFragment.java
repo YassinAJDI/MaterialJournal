@@ -55,6 +55,12 @@ public class NoteDetailFragment extends Fragment {
         setupFab();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mNoteDetailViewModel.start(getArguments().getString(ARGUMENT_NOTE_ID));
+    }
+
     private void setupFab() {
         FloatingActionButton fab = getActivity().findViewById(R.id.fab_edit_note);
 

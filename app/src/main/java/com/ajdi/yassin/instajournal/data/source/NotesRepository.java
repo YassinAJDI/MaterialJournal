@@ -3,6 +3,8 @@ package com.ajdi.yassin.instajournal.data.source;
 import android.support.annotation.NonNull;
 
 import com.ajdi.yassin.instajournal.data.model.Note;
+import com.ajdi.yassin.instajournal.ui.notedetail.NoteDetailViewModel;
+import com.google.android.gms.tasks.Task;
 
 import java.util.Arrays;
 import java.util.List;
@@ -71,5 +73,34 @@ public class NotesRepository implements NotesDataSource {
 //            callback.onNotesLoaded(new ArrayList<>(mCachedNotes.values()));
 //            return;
 //        }
+    }
+
+    @Override
+    public void getNote(String noteId, @NonNull GetNoteCallback callback) {
+        checkNotNull(noteId);
+        checkNotNull(callback);
+
+        Note cachedNote = getTaskWithId(noteId);
+
+        // Respond immediately with cache if available
+        if (cachedNote != null) {
+            callback.onNoteLoaded(cachedNote);
+            return;
+        }
+
+        // Load from server/persisted if needed.
+
+        // Is the task in the local data source? If not, query the network.
+        // TODO: 27/06/2018 implement loading from room
+
+    }
+
+    private Note getTaskWithId(String noteId) {
+        checkNotNull(noteId);
+        if (mCachedNotes == null || mCachedNotes.isEmpty()) {
+            return null;
+        } else {
+            return mCachedNotes.get(noteId);
+        }
     }
 }

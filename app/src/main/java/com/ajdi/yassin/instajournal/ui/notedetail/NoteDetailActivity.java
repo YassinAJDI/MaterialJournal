@@ -18,7 +18,7 @@ public class NoteDetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_NOTE_ID = "TASK_ID";
 
-    private NotesViewModel mViewModel;
+    private NoteDetailViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +29,6 @@ public class NoteDetailActivity extends AppCompatActivity {
         setupViewFragment();
 
         mViewModel = obtainViewModel(this);
-    }
-
-    private NotesViewModel obtainViewModel(NoteDetailActivity noteDetailActivity) {
-        return null;
     }
 
     private void setupViewFragment() {
