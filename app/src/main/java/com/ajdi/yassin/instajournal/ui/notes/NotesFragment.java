@@ -4,6 +4,7 @@ package com.ajdi.yassin.instajournal.ui.notes;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,8 @@ import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.databinding.FragmentNotesBinding;
 
 import java.util.ArrayList;
+
+import timber.log.Timber;
 
 /**
  * Display a grid of {@link Note}s. User can choose to view all, favorite or trashed notes.
@@ -44,6 +47,7 @@ public class NotesFragment extends Fragment {
         mNotesViewModel = NotesActivity.obtainViewModel(getActivity());
 
         mFragmentNotesBinding.setViewmodel(mNotesViewModel);
+        mFragmentNotesBinding.setLifecycleOwner(this);
 
         setHasOptionsMenu(true);
 
@@ -66,6 +70,7 @@ public class NotesFragment extends Fragment {
     }
 
     private void setupListAdapter() {
+        Timber.d("setupListAdapter");
         RecyclerView recyclerView = mFragmentNotesBinding.recyclerNoteList;
         recyclerView.setLayoutManager(new LinearLayoutManager(
                 getActivity(), LinearLayoutManager.VERTICAL, false));
@@ -86,6 +91,7 @@ public class NotesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //mTasksViewModel.addNewTask();
+                Snackbar.make(getView(), "Working", Snackbar.LENGTH_LONG).show();
             }
         });
     }

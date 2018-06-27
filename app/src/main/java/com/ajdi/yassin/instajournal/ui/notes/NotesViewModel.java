@@ -54,7 +54,7 @@ public class NotesViewModel extends AndroidViewModel {
         mNotesRepository.getNotes(new NotesDataSource.LoadNotesCallback() {
             @Override
             public void onNotesLoaded(List<Note> notes) {
-                Timber.d("Notes loaded.");
+                Timber.d("Notes loaded:" + notes.size());
                 //List<Note> notesToShow = new ArrayList<>();
 
 

@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:text="@{note.title}"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
     </LinearLayout>
 </layout>

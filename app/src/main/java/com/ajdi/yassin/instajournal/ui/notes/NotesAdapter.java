@@ -10,6 +10,8 @@ import com.ajdi.yassin.instajournal.databinding.ItemNoteBinding;
 
 import java.util.List;
 
+import timber.log.Timber;
+
 public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final NotesViewModel mNotesViewModel;
@@ -34,9 +36,13 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        Timber.d("Binding item at position: " + position);
         Note note = mNotes.get(position);
+        Timber.d(note.toString());
+
         NoteViewHolder noteViewHolder = (NoteViewHolder) holder;
-        noteViewHolder.bind(note);
+        noteViewHolder.binding.setNote(note);
+        noteViewHolder.binding.executePendingBindings();
     }
 
     @Override
@@ -45,6 +51,7 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     public void replaceData(List<Note> notes) {
+        Timber.d("Data replaced total: " + notes.size());
         mNotes = notes;
         notifyDataSetChanged();
     }
@@ -62,11 +69,6 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             super(binding.getRoot());
 
             this.binding = binding;
-        }
-
-        public void bind(Note note) {
-            binding.setNote(note);
-            binding.executePendingBindings();
         }
     }
 }
