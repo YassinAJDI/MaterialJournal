@@ -15,6 +15,8 @@ import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.databinding.FragmentNotesBinding;
 
+import java.util.ArrayList;
+
 /**
  * Display a grid of {@link Note}s. User can choose to view all, favorite or trashed notes.
  */
@@ -68,9 +70,9 @@ public class NotesFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(
                 getActivity(), LinearLayoutManager.VERTICAL, false));
 
-        mNotesAdapter = new NotesAdapter();
+        mNotesAdapter = new NotesAdapter(new ArrayList<Note>(0), mNotesViewModel);
 
-        recyclerView.setAdapter(null);
+        recyclerView.setAdapter(mNotesAdapter);
     }
 
     private void setupFab() {

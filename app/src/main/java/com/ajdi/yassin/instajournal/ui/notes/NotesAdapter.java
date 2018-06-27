@@ -12,7 +12,14 @@ import java.util.List;
 
 public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private final NotesViewModel mNotesViewModel;
+
     private List<Note> mNotes;
+
+    public NotesAdapter(List<Note> notes, NotesViewModel notesViewModel) {
+        this.mNotes = notes;
+        mNotesViewModel = notesViewModel;
+    }
 
     @NonNull
     @Override
