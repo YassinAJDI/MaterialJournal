@@ -5,6 +5,11 @@ public class Note {
     private String mTitle;
     private String mContent;
 
+    public Note(String title, String content) {
+        mTitle = title;
+        mContent = content;
+    }
+
     public String getTitle() {
         return mTitle;
     }
