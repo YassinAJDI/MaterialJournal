@@ -1,5 +1,6 @@
 package com.ajdi.yassin.instajournal.ui.notes;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +13,7 @@ import com.ajdi.yassin.instajournal.utils.ActivityUtils;
 public class NotesActivity extends AppCompatActivity {
 
     private NotesFragment mNotesFragment;
+    private NotesViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,8 @@ public class NotesActivity extends AppCompatActivity {
         setupToolbar();
 
         setupViewFragment();
+
+        mViewModel = obtainViewModel(this);
 
     }
 
@@ -44,6 +48,12 @@ public class NotesActivity extends AppCompatActivity {
     }
 
     public static NotesViewModel obtainViewModel(FragmentActivity activity) {
-        return null;
+        // Use a Factory to inject dependencies into the ViewModel
+        ViewModelFactory factory = ViewModelFactory.getInstance(activity.getApplication());
+
+        NotesViewModel viewModel =
+                ViewModelProviders.of(activity, factory).get(NotesViewModel.class);
+
+        return viewModel;
     }
 }

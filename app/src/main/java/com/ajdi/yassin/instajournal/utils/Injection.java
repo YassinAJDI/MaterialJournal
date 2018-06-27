@@ -13,7 +13,7 @@ import com.ajdi.yassin.instajournal.data.source.NotesRepository;
  */
 public class Injection {
 
-    public static NotesRepository provideFeedsRepository(@NonNull Context context) {
-        return NotesRepository.getInstance(provideLocalDataSource(context));
+    public static NotesRepository provideNotesRepository(@NonNull Context context) {
+        return NotesRepository.getInstance();
     }
 }

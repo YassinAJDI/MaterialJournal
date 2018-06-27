@@ -1,11 +1,11 @@
 package com.ajdi.yassin.instajournal.ui.notes;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 
 import com.ajdi.yassin.instajournal.data.source.NotesRepository;
+import com.ajdi.yassin.instajournal.utils.Injection;
 
 
 /**
@@ -25,7 +25,7 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
             synchronized (ViewModelFactory.class) {
                 if (INSTANCE == null) {
                     INSTANCE = new ViewModelFactory(application,
-                            Injection.provideTasksRepository(application.getApplicationContext()));
+                            Injection.provideNotesRepository(application.getApplicationContext()));
                 }
             }
         }
