@@ -17,10 +17,12 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // Inflate
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        ItemNoteBinding itemBinding =
+        // Create the binding
+        ItemNoteBinding binding =
                 ItemNoteBinding.inflate(layoutInflater, parent, false);
-        return new NoteViewHolder(itemBinding);
+        return new NoteViewHolder(binding);
     }
 
     @Override
@@ -47,17 +49,17 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
      */
     public class NoteViewHolder extends RecyclerView.ViewHolder {
 
-        private final ItemNoteBinding mBinding;
+        private final ItemNoteBinding binding;
 
         public NoteViewHolder(final ItemNoteBinding binding) {
             super(binding.getRoot());
 
-            mBinding = binding;
+            this.binding = binding;
         }
 
         public void bind(Note note) {
-            //mBinding.setItem();
-            //binding.executePendingBindings();
+            //binding.setNote(note);
+            binding.executePendingBindings();
         }
     }
 }
