@@ -6,9 +6,7 @@
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:enabled="@{viewmodel.dataLoading}"
-        app:refreshing="@{viewmodel.dataLoading}">
+        android:layout_height="match_parent">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -29,7 +27,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/title_hint"
                     android:maxLines="1"
-                    android:text="@={viewmodel.title}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
                 <EditText
@@ -37,8 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
                     android:gravity="top"
-                    android:hint="@string/content_hint"
-                    android:text="@={viewmodel.description}" />
+                    android:hint="@string/content_hint" />
 
             </LinearLayout>
         </ScrollView>

@@ -2,6 +2,9 @@ package com.ajdi.yassin.instajournal.ui.notes;
 
 
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +13,17 @@ import android.widget.TextView;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.data.model.Note;
+import com.ajdi.yassin.instajournal.databinding.FragmentAddeditNoteBinding;
+import com.ajdi.yassin.instajournal.databinding.FragmentNotesBinding;
 
 /**
  * Display a grid of {@link Note}s. User can choose to view all, favorite or trashed notes.
  */
 public class NotesFragment extends Fragment {
+
+    private NotesViewModel mNotesViewModel;
+
+    private FragmentNotesBinding mFragmentNotesBinding;
 
     public NotesFragment() {
         // Required empty public constructor
@@ -31,11 +40,35 @@ public class NotesFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        TextView textView = new TextView(getActivity());
-        textView.setText(R.string.hello_blank_fragment);
-        return textView;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mFragmentNotesBinding = FragmentNotesBinding.inflate(inflater, container,
+                false);
+
+        //mFeedsViewModel = FeedsActivity.obtainViewModel(getActivity());
+
+        //mFragmentNotesBinding.setViewmodel(mFeedsViewModel);
+
+        setHasOptionsMenu(true);
+
+        return mFragmentNotesBinding.getRoot();
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        
+        setupFab();
+    }
+
+    private void setupFab() {
+        FloatingActionButton fab = getActivity().findViewById(R.id.fab_add_note);
+
+        fab.setImageResource(R.drawable.ic_add_black_24dp);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //mTasksViewModel.addNewTask();
+            }
+        });
+    }
 }
