@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.ajdi.yassin.instajournal.R;
+import com.ajdi.yassin.instajournal.utils.ActivityUtils;
 
 public class NotesActivity extends AppCompatActivity {
 
@@ -35,11 +36,10 @@ public class NotesActivity extends AppCompatActivity {
                 (NotesFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         if (mNotesFragment == null) {
             // Create the fragment
-            mNotesFragment = mNotesFragment.newInstance();
+            mNotesFragment = NotesFragment.newInstance();
             FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .add(R.id.fragment_container, mNotesFragment, R.id.fragment_container)
-                    .commit();
+            ActivityUtils.replaceFragmentInActivity(fragmentManager,
+                    mNotesFragment, R.id.fragment_container);
         }
     }
 }
