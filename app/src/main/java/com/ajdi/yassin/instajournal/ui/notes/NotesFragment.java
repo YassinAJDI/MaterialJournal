@@ -39,7 +39,7 @@ public class NotesFragment extends Fragment {
 
         mNotesViewModel = NotesActivity.obtainViewModel(getActivity());
 
-        //mFragmentNotesBinding.setViewmodel(mFeedsViewModel);
+        mFragmentNotesBinding.setViewmodel(mNotesViewModel);
 
         setHasOptionsMenu(true);
 
@@ -53,6 +53,12 @@ public class NotesFragment extends Fragment {
         setupFab();
 
         setupListAdapter();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mNotesViewModel.start();
     }
 
     private void setupListAdapter() {

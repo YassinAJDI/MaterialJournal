@@ -28,4 +28,7 @@ public class NotesViewModel extends AndroidViewModel {
         mContext = context.getApplicationContext(); // Force use of Application Context.
         mNotesRepository = repository;
     }
+
+    public void start() {
+    }
 }

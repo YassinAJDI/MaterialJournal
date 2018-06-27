@@ -12,7 +12,6 @@ import com.ajdi.yassin.instajournal.utils.ActivityUtils;
 
 public class NotesActivity extends AppCompatActivity {
 
-    private NotesFragment mNotesFragment;
     private NotesViewModel mViewModel;
 
     @Override
@@ -36,8 +35,8 @@ public class NotesActivity extends AppCompatActivity {
     }
 
     private void setupViewFragment() {
-        mNotesFragment =
-                (NotesFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        NotesFragment mNotesFragment = (NotesFragment)
+                getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         if (mNotesFragment == null) {
             // Create the fragment
             mNotesFragment = NotesFragment.newInstance();
