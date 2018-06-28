@@ -5,6 +5,10 @@ import android.support.annotation.NonNull;
 import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.data.source.NotesDataSource;
 
+import timber.log.Timber;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * Concrete implementation of a data source as a db.
  */
@@ -41,7 +45,15 @@ public class NotesLocalDataSource implements NotesDataSource {
     }
 
     @Override
-    public void saveNote(@NonNull Note note) {
+    public void saveNote(@NonNull final Note note) {
+        checkNotNull(note);
+        Timber.d("saveNote");
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mNotesDao.insertNote(note);
+            }
+        }).start();
     }
 }
