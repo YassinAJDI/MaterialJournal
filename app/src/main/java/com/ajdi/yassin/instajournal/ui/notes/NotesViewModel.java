@@ -31,10 +31,11 @@ public class NotesViewModel extends AndroidViewModel {
 
     private final SingleLiveEvent<Void> mNewNoteEvent = new SingleLiveEvent<>();
 
+    private final SingleLiveEvent<String> mOpenNoteEvent = new SingleLiveEvent<>();
+
     public final ObservableBoolean dataLoading = new ObservableBoolean(false);
 
     private final SnackbarMessage mSnackbarText = new SnackbarMessage();
-
 
     private final NotesRepository mNotesRepository;
 
@@ -85,6 +86,10 @@ public class NotesViewModel extends AndroidViewModel {
             }
         });
 
+    }
+
+    SingleLiveEvent<String> getOpenNoteEvent() {
+        return mOpenNoteEvent;
     }
 
     SingleLiveEvent<Void> getNewNoteEvent() {

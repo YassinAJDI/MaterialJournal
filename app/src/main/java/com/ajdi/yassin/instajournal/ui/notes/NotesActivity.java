@@ -37,6 +37,16 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator{
                 addNewNote();
             }
         });
+
+        // Subscribe to open note event
+        mViewModel.getOpenNoteEvent().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String noteId) {
+                if (noteId != null) {
+                    openTaskDetails(taskId);
+                }
+            }
+        });
     }
 
     private void setupToolbar() {
