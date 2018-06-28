@@ -70,7 +70,7 @@ public class NoteDetailFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //mViewModel.editTask();
+                mNoteDetailViewModel.editNote();
             }
         });
     }

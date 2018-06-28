@@ -1,7 +1,9 @@
 package com.ajdi.yassin.instajournal.ui.notedetail;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -29,12 +31,12 @@ public class NoteDetailActivity extends AppCompatActivity {
         mViewModel = obtainViewModel(this);
 
         // The activity observes the navigation commands in the ViewModel
-//        mViewModel.getEditTaskCommand().observe(this, new Observer<Void>() {
-//            @Override
-//            public void onChanged(@Nullable Void _) {
-//                TaskDetailActivity.this.onStartEditTask();
-//            }
-//        });
+        mViewModel.getEditNoteCommand().observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(@Nullable Void _) {
+                //NoteDetailActivity.this.onStartEditTask();
+            }
+        });
 //        mViewModel.getDeleteTaskCommand().observe(this, new Observer<Void>() {
 //            @Override
 //            public void onChanged(@Nullable Void _) {

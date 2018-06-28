@@ -9,10 +9,13 @@ import android.support.annotation.NonNull;
 import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.data.source.NotesDataSource;
 import com.ajdi.yassin.instajournal.data.source.NotesRepository;
+import com.ajdi.yassin.instajournal.utils.SingleLiveEvent;
 
 public class NoteDetailViewModel extends AndroidViewModel implements NotesDataSource.GetNoteCallback {
 
     public final ObservableField<Note> note = new ObservableField<>();
+
+    private final SingleLiveEvent<Void> mEditNoteCommand = new SingleLiveEvent<>();
 
     private final NotesRepository mNotesRepository;
 
@@ -48,5 +51,13 @@ public class NoteDetailViewModel extends AndroidViewModel implements NotesDataSo
 
     public void setNote(Note note) {
         this.note.set(note);
+    }
+
+    public void editNote() {
+        mEditNoteCommand.call();
+    }
+
+    public SingleLiveEvent<Void> getEditNoteCommand() {
+        return mEditNoteCommand;
     }
 }
