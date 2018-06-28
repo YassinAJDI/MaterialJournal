@@ -3,11 +3,7 @@ package com.ajdi.yassin.instajournal.data.source;
 import android.support.annotation.NonNull;
 
 import com.ajdi.yassin.instajournal.data.model.Note;
-import com.ajdi.yassin.instajournal.ui.notedetail.NoteDetailViewModel;
-import com.google.android.gms.tasks.Task;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -57,15 +53,15 @@ public class NotesRepository implements NotesDataSource {
 
         // this is just for test purpose
 
-        List<Note> notes = Arrays.asList(
-                new Note("Test 1", "content 1"),
-                new Note("Test 2", "content 2"),
-                new Note("Test 3", "content 3"),
-                new Note("Test 4", "content 4"),
-                new Note("Test 5", "content 5")
-        );
+//        List<Note> notes = Arrays.asList(
+//                new Note("Test 1", "content 1"),
+//                new Note("Test 2", "content 2"),
+//                new Note("Test 3", "content 3"),
+//                new Note("Test 4", "content 4"),
+//                new Note("Test 5", "content 5")
+//        );
 
-        callback.onNotesLoaded(notes);
+        callback.onNotesLoaded(null);
 
 
         // Respond immediately with cache if available and not dirty

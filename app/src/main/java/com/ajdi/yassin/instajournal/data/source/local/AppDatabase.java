@@ -10,7 +10,7 @@ import com.ajdi.yassin.instajournal.data.model.Note;
 /**
  * The Room Database that contains the note table.
  */
-@Database(entities = {Note.class}, version = 1)
+@Database(entities = {Note.class}, version = 1, exportSchema  = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DATABASE_NAME = "Notes.db";

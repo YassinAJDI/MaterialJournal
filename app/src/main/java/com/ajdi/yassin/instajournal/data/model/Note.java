@@ -11,7 +11,7 @@ public class Note {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "id")
-    private String mId;
+    private int mId;
 
     @ColumnInfo(name = "title")
     private String mTitle;
@@ -25,11 +25,19 @@ public class Note {
     /**
      * This constructor is used by Room.
      */
-    public Note(@NonNull String id, String title, String content, long date) {
+    public Note(@NonNull int id, String title, String content, long date) {
         this.mId = id;
         this.mTitle = title;
         this.mContent = content;
         this.mDate = date;
+    }
+
+    public int getId() {
+        return mId;
+    }
+
+    public long getDate() {
+        return mDate;
     }
 
     public String getTitle() {
