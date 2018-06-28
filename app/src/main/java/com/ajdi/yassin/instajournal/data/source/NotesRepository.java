@@ -43,9 +43,6 @@ public class NotesRepository implements NotesDataSource {
         return INSTANCE;
     }
 
-    public void refreshNotes() {
-    }
-
     @Override
     public void getNotes(@NonNull final LoadNotesCallback callback) {
         checkNotNull(callback);
@@ -56,24 +53,19 @@ public class NotesRepository implements NotesDataSource {
             return;
         }
 
-        if (mCacheIsDirty) {
-            // If the cache is dirty we need to fetch new data from the network.
+        // Query the local storage if available. If not, query the network.
+        mNotesLocalDataSource.getNotes(new LoadNotesCallback() {
+            @Override
+            public void onNotesLoaded(List<Note> notes) {
+                refreshCache(notes);
+                callback.onNotesLoaded(new ArrayList<>(mCachedNotes.values()));
+            }
 
-        } else {
-            // Query the local storage if available. If not, query the network.
-            mNotesLocalDataSource.getNotes(new LoadNotesCallback() {
-                @Override
-                public void onNotesLoaded(List<Note> notes) {
-                    refreshCache(notes);
-                    callback.onNotesLoaded(new ArrayList<>(mCachedNotes.values()));
-                }
-
-                @Override
-                public void onDataNotAvailable() {
-                    // database is empty get data from remote db
-                }
-            });
-        }
+            @Override
+            public void onDataNotAvailable() {
+                // database is empty get data from remote db
+            }
+        });
     }
 
     @Override
@@ -100,6 +92,7 @@ public class NotesRepository implements NotesDataSource {
     public void saveNote(@NonNull Note note) {
         checkNotNull(note);
         mNotesLocalDataSource.saveNote(note);
+        refreshNotes();
 
         // Do in memory cache update to keep the app UI up to date
         if (mCachedNotes == null) {
@@ -126,5 +119,9 @@ public class NotesRepository implements NotesDataSource {
             mCachedNotes.put(note.getId(), note);
         }
         mCacheIsDirty = false;
+    }
+
+    private void refreshNotes() {
+        mCacheIsDirty = true;
     }
 }
