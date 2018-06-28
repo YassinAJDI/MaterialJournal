@@ -41,6 +41,18 @@
                     android:text="@={viewmodel.title}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
+                <Button
+                    android:id="@+id/button_pick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pick an image" />
+
+                <ImageView
+                    android:id="@+id/image_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:srcCompat="@android:color/darker_gray" />
+
                 <EditText
                     android:id="@+id/edit_add_note_content"
                     android:layout_width="match_parent"
