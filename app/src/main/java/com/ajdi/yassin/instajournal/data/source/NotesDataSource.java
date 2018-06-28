@@ -3,8 +3,6 @@ package com.ajdi.yassin.instajournal.data.source;
 import android.support.annotation.NonNull;
 
 import com.ajdi.yassin.instajournal.data.model.Note;
-import com.ajdi.yassin.instajournal.ui.notedetail.NoteDetailViewModel;
-import com.google.android.gms.tasks.Task;
 
 import java.util.List;
 
@@ -30,6 +28,8 @@ public interface NotesDataSource {
 
     void getNotes(@NonNull LoadNotesCallback callback);
 
-    void getNote(String noteId, @NonNull GetNoteCallback callback);
+    void getNote(@NonNull String noteId, @NonNull GetNoteCallback callback);
+
+    void saveNote(@NonNull Note note);
 
 }

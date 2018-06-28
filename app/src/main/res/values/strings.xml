@@ -6,6 +6,7 @@
 
     <string name="add_note">New Note</string>
     <string name="edit_note">Edit Note</string>
+    <string name="empty_note_message">Note title and content cannot be empty</string>
 
     <!--actions-->
     <string name="action_add_notes">Add a Note item +</string>
