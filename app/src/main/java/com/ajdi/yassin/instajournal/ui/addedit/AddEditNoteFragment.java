@@ -3,6 +3,7 @@ package com.ajdi.yassin.instajournal.ui.addedit;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.databinding.FragmentAddeditNoteBinding;
+import com.ajdi.yassin.instajournal.utils.SnackbarMessage;
+import com.ajdi.yassin.instajournal.utils.SnackbarUtils;
 
 /**
  * Main UI for the add note screen. Users can enter note details.
@@ -56,6 +59,8 @@ public class AddEditNoteFragment extends Fragment {
         setupFab();
 
         setupActionBar();
+
+        setupSnackbar();
     }
 
     private void setupActionBar() {
@@ -77,6 +82,15 @@ public class AddEditNoteFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mViewModel.saveNote();
+            }
+        });
+    }
+
+    private void setupSnackbar() {
+        mViewModel.getSnackbarMessage().observe(this, new SnackbarMessage.SnackbarObserver() {
+            @Override
+            public void onNewMessage(@StringRes int snackbarMessageResourceId) {
+                SnackbarUtils.showSnackbar(getView(), getString(snackbarMessageResourceId));
             }
         });
     }

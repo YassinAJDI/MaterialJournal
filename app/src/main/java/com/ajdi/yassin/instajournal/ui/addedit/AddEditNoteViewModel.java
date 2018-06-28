@@ -57,7 +57,7 @@ public class AddEditNoteViewModel extends AndroidViewModel {
         if (isNewNote() || mNoteId == null) {
             createNote(note);
         } else {
-            
+
         }
     }
 
@@ -68,5 +68,9 @@ public class AddEditNoteViewModel extends AndroidViewModel {
 
     public boolean isNewNote() {
         return mIsNewNote;
+    }
+
+    public SnackbarMessage getSnackbarMessage() {
+        return mSnackbarText;
     }
 }
