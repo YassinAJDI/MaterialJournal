@@ -12,10 +12,11 @@ import android.support.v7.widget.Toolbar;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteActivity;
+import com.ajdi.yassin.instajournal.ui.notedetail.NoteDetailActivity;
 import com.ajdi.yassin.instajournal.utils.ActivityUtils;
 import com.ajdi.yassin.instajournal.utils.ViewModelFactory;
 
-public class NotesActivity extends AppCompatActivity implements NotesNavigator{
+public class NotesActivity extends AppCompatActivity implements NotesNavigator, NoteItemNavigator {
 
     private NotesViewModel mViewModel;
 
@@ -43,7 +44,7 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator{
             @Override
             public void onChanged(@Nullable String noteId) {
                 if (noteId != null) {
-                    openTaskDetails(taskId);
+                    openNoteDetails(noteId);
                 }
             }
         });
@@ -84,6 +85,13 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator{
     @Override
     public void addNewNote() {
         Intent intent = new Intent(this, AddEditNoteActivity.class);
+        startActivityForResult(intent, AddEditNoteActivity.REQUEST_CODE);
+    }
+
+    @Override
+    public void openNoteDetails(String noteId) {
+        Intent intent = new Intent(this, NoteDetailActivity.class);
+        intent.putExtra(NoteDetailActivity.EXTRA_NOTE_ID, noteId);
         startActivityForResult(intent, AddEditNoteActivity.REQUEST_CODE);
     }
 }

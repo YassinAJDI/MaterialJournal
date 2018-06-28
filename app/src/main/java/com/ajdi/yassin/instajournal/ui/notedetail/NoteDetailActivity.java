@@ -13,7 +13,7 @@ import com.ajdi.yassin.instajournal.utils.ActivityUtils;
 
 public class NoteDetailActivity extends AppCompatActivity {
 
-    public static final String EXTRA_NOTE_ID = "TASK_ID";
+    public static final String EXTRA_NOTE_ID = "NOTE_ID";
 
     private NoteDetailViewModel mViewModel;
 
