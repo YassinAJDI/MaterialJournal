@@ -8,8 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.ajdi.yassin.instajournal.R;
-import com.ajdi.yassin.instajournal.utils.ViewModelFactory;
 import com.ajdi.yassin.instajournal.utils.ActivityUtils;
+import com.ajdi.yassin.instajournal.utils.ViewModelFactory;
 
 public class NoteDetailActivity extends AppCompatActivity {
 
@@ -20,12 +20,27 @@ public class NoteDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_note_detail);
 
         setupToolbar();
 
         setupViewFragment();
 
         mViewModel = obtainViewModel(this);
+
+        // The activity observes the navigation commands in the ViewModel
+//        mViewModel.getEditTaskCommand().observe(this, new Observer<Void>() {
+//            @Override
+//            public void onChanged(@Nullable Void _) {
+//                TaskDetailActivity.this.onStartEditTask();
+//            }
+//        });
+//        mViewModel.getDeleteTaskCommand().observe(this, new Observer<Void>() {
+//            @Override
+//            public void onChanged(@Nullable Void _) {
+//                TaskDetailActivity.this.onTaskDeleted();
+//            }
+//        });
     }
 
     private void setupViewFragment() {

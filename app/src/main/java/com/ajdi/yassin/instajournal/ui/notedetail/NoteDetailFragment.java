@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.databinding.FragmentNoteDetailBinding;
-import com.ajdi.yassin.instajournal.ui.notes.NotesActivity;
 
 public class NoteDetailFragment extends Fragment {
 
@@ -40,7 +39,9 @@ public class NoteDetailFragment extends Fragment {
                 inflate(inflater, container, false);
 
         mNoteDetailViewModel = NoteDetailActivity.obtainViewModel(getActivity());
-        //binding.setViewmodel(mNotesViewModel);
+
+        binding.setViewmodel(mNoteDetailViewModel);
+
         binding.setLifecycleOwner(this);
 
         setHasOptionsMenu(true);
@@ -53,6 +54,8 @@ public class NoteDetailFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         setupFab();
+
+        setupSnackbar();
     }
 
     @Override
@@ -71,4 +74,9 @@ public class NoteDetailFragment extends Fragment {
             }
         });
     }
+
+    private void setupSnackbar() {
+
+    }
+
 }
