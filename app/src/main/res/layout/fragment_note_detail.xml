@@ -47,7 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/text_note_title"
-                    android:text="@{viewmodel.note.content"
+                    android:text="@{viewmodel.note.content}"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
             </RelativeLayout>
