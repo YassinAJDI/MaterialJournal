@@ -41,6 +41,15 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         Timber.d(note.toString());
 
         NoteViewHolder noteViewHolder = (NoteViewHolder) holder;
+
+        NoteItemUserActionsListener userActionsListener = new NoteItemUserActionsListener() {
+            @Override
+            public void onNoteClicked(Note note) {
+                mNotesViewModel.getOpenNoteEvent().setValue(String.valueOf(note.getId()));
+            }
+        };
+
+        noteViewHolder.binding.setListener(userActionsListener);
         noteViewHolder.binding.setNote(note);
         noteViewHolder.binding.executePendingBindings();
     }
