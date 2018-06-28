@@ -3,6 +3,7 @@ package com.ajdi.yassin.instajournal.ui.notes;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,8 @@ import android.view.ViewGroup;
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.databinding.FragmentNotesBinding;
+import com.ajdi.yassin.instajournal.utils.SnackbarMessage;
+import com.ajdi.yassin.instajournal.utils.SnackbarUtils;
 
 import java.util.ArrayList;
 
@@ -46,7 +49,7 @@ public class NotesFragment extends Fragment {
         mNotesViewModel = NotesActivity.obtainViewModel(getActivity());
 
         mFragmentNotesBinding.setViewmodel(mNotesViewModel);
-        mFragmentNotesBinding.setLifecycleOwner(this);
+        //mFragmentNotesBinding.setLifecycleOwner(this);
 
         setHasOptionsMenu(true);
 
@@ -60,6 +63,8 @@ public class NotesFragment extends Fragment {
         setupFab();
 
         setupListAdapter();
+
+        setupSnackbar();
     }
 
     @Override
@@ -90,6 +95,15 @@ public class NotesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mNotesViewModel.addNewNote();
+            }
+        });
+    }
+
+    private void setupSnackbar() {
+        mNotesViewModel.getSnackbarMessage().observe(this, new SnackbarMessage.SnackbarObserver() {
+            @Override
+            public void onNewMessage(@StringRes int snackbarMessageResourceId) {
+                SnackbarUtils.showSnackbar(getView(), getString(snackbarMessageResourceId));
             }
         });
     }

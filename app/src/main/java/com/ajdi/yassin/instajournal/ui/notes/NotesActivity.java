@@ -66,6 +66,12 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator{
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mViewModel.handleActivityResult(requestCode, resultCode);
+
+    }
+
+    @Override
     public void addNewNote() {
         Intent intent = new Intent(this, AddEditNoteActivity.class);
         startActivityForResult(intent, AddEditNoteActivity.REQUEST_CODE);

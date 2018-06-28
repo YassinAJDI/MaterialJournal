@@ -8,10 +8,13 @@ import android.databinding.ObservableBoolean;
 import android.databinding.ObservableList;
 import android.support.annotation.NonNull;
 
+import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.data.source.NotesDataSource;
 import com.ajdi.yassin.instajournal.data.source.NotesRepository;
+import com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteActivity;
 import com.ajdi.yassin.instajournal.utils.SingleLiveEvent;
+import com.ajdi.yassin.instajournal.utils.SnackbarMessage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +32,9 @@ public class NotesViewModel extends AndroidViewModel {
     private final SingleLiveEvent<Void> mNewNoteEvent = new SingleLiveEvent<>();
 
     public final ObservableBoolean dataLoading = new ObservableBoolean(false);
+
+    private final SnackbarMessage mSnackbarText = new SnackbarMessage();
+
 
     private final NotesRepository mNotesRepository;
 
@@ -85,10 +91,24 @@ public class NotesViewModel extends AndroidViewModel {
         return mNewNoteEvent;
     }
 
+    SnackbarMessage getSnackbarMessage() {
+        return mSnackbarText;
+    }
+
     /**
      * Called by the Data Binding library when user click FAB button.
      */
     public void addNewNote() {
         mNewNoteEvent.call();
+    }
+
+    void handleActivityResult(int requestCode, int resultCode) {
+        if (AddEditNoteActivity.REQUEST_CODE == requestCode) {
+            switch (resultCode) {
+                case AddEditNoteActivity.ADD_EDIT_RESULT_OK:
+                    mSnackbarText.setValue(R.string.successfully_added_note_message);
+                    break;
+            }
+        }
     }
 }
