@@ -26,8 +26,6 @@ public class AddEditNoteFragment extends Fragment {
 
     private AddEditNoteViewModel mViewModel;
 
-    private FragmentAddeditNoteBinding mViewDataBinding;
-
 
     public AddEditNoteFragment() {
         // Required empty public constructor
@@ -40,16 +38,17 @@ public class AddEditNoteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mViewDataBinding = FragmentAddeditNoteBinding.inflate(inflater, container, false);
+        FragmentAddeditNoteBinding binding =
+                FragmentAddeditNoteBinding.inflate(inflater, container, false);
 
         mViewModel = AddEditNoteActivity.obtainViewModel(getActivity());
 
-        mViewDataBinding.setViewmodel(mViewModel);
+        binding.setViewmodel(mViewModel);
 
         setHasOptionsMenu(true);
         setRetainInstance(false);
 
-        return mViewDataBinding.getRoot();
+        return binding.getRoot();
     }
 
     @Override
