@@ -28,7 +28,7 @@ public class AddEditNoteActivity extends AppCompatActivity {
         mViewModel = obtainViewModel(this);
     }
 
-    private AddEditNoteViewModel obtainViewModel(FragmentActivity activity) {
+    public static AddEditNoteViewModel obtainViewModel(FragmentActivity activity) {
         // Use a Factory to inject dependencies into the ViewModel
         ViewModelFactory factory = ViewModelFactory.getInstance(activity.getApplication());
 
