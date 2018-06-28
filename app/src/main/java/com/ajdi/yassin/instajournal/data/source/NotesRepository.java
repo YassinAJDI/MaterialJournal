@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.ajdi.yassin.instajournal.data.model.Note;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -13,16 +14,16 @@ public class NotesRepository implements NotesDataSource {
 
     private volatile static NotesRepository INSTANCE = null;
 
-    Map<String, Note> mCachedNotes;
+    private final NotesDataSource mNotesLocalDataSource;
 
-    /**
-     * Marks the cache as invalid, to force an update the next time data is requested.
-     */
+    Map<Integer, Note> mCachedNotes;
+
+    // force clean cache notes
     private boolean mCacheIsDirty = false;
 
     // Prevent direct instantiation.
-    private NotesRepository() {
-
+    private NotesRepository(@NonNull NotesDataSource notesLocalDataSource) {
+        mNotesLocalDataSource = checkNotNull(notesLocalDataSource);
     }
 
     /**
@@ -30,11 +31,11 @@ public class NotesRepository implements NotesDataSource {
      *
      * @return the {@link NotesRepository} instance
      */
-    public static NotesRepository getInstance() {
+    public static NotesRepository getInstance(NotesDataSource notesLocalDataSource) {
         if (INSTANCE == null) {
             synchronized (NotesRepository.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = new NotesRepository();
+                    INSTANCE = new NotesRepository(notesLocalDataSource);
                 }
             }
         }
@@ -90,6 +91,18 @@ public class NotesRepository implements NotesDataSource {
         // Is the task in the local data source? If not, query the network.
         // TODO: 27/06/2018 implement loading from room
 
+    }
+
+    @Override
+    public void saveNote(@NonNull Note note) {
+        checkNotNull(note);
+        mNotesLocalDataSource.saveNote(note);
+
+        // Do in memory cache update to keep the app UI up to date
+        if (mCachedNotes == null) {
+            mCachedNotes = new LinkedHashMap<>();
+        }
+        mCachedNotes.put(note.getId(), note);
     }
 
     private Note getTaskWithId(String noteId) {
