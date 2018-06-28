@@ -10,11 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.databinding.FragmentAddeditNoteBinding;
-import com.ajdi.yassin.instajournal.ui.notedetail.NoteDetailActivity;
 
 /**
  * Main UI for the add note screen. Users can enter note details.
@@ -40,7 +38,10 @@ public class AddEditNoteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mViewDataBinding = FragmentAddeditNoteBinding.inflate(inflater, container, false);
+
         mViewModel = AddEditNoteActivity.obtainViewModel(getActivity());
+
+        mViewDataBinding.setViewmodel(mViewModel);
 
         setHasOptionsMenu(true);
         setRetainInstance(false);
