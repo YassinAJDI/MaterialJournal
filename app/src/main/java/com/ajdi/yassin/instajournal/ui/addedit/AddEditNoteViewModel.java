@@ -79,10 +79,6 @@ public class AddEditNoteViewModel extends AndroidViewModel implements NotesDataS
         dataLoading.set(false);
     }
 
-    SingleLiveEvent<Void> getNoteUpdatedEvent() {
-        return mNoteUpdated;
-    }
-
     // Called when clicking on fab.
     void saveNote() {
         Note note = new Note(title.get(), content.get(), new Date().getTime());
@@ -94,7 +90,8 @@ public class AddEditNoteViewModel extends AndroidViewModel implements NotesDataS
         if (isNewNote() || mNoteId == null) {
             createNote(note);
         } else {
-
+            note = new Note(Integer.parseInt(mNoteId), title.get(), content.get(), new Date().getTime());
+            updateNote(note);
         }
     }
 
@@ -103,8 +100,20 @@ public class AddEditNoteViewModel extends AndroidViewModel implements NotesDataS
         mNoteUpdated.call();
     }
 
+    private void updateNote(Note note) {
+        if (isNewNote()) {
+            throw new RuntimeException("updateNote() was called but note is new.");
+        }
+        mNotesRepository.saveNote(note);
+        mNoteUpdated.call();
+    }
+
     public boolean isNewNote() {
         return mIsNewNote;
+    }
+
+    SingleLiveEvent<Void> getNoteUpdatedEvent() {
+        return mNoteUpdated;
     }
 
     public SnackbarMessage getSnackbarMessage() {

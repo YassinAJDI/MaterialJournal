@@ -107,12 +107,6 @@ public class NotesRepository implements NotesDataSource {
         checkNotNull(note);
         mNotesLocalDataSource.saveNote(note);
         refreshNotes();
-
-        // Do in memory cache update to keep the app UI up to date
-        if (mCachedNotes == null) {
-            mCachedNotes = new LinkedHashMap<>();
-        }
-        mCachedNotes.put(note.getId(), note);
     }
 
     private Note getTaskWithId(String noteId) {

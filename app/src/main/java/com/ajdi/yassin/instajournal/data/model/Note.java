@@ -28,7 +28,7 @@ public class Note {
     /**
      * This constructor is used by Room.
      */
-    public Note(@NonNull int id, String title, String content, long date) {
+    public Note(int id, String title, String content, long date) {
         this.mId = id;
         this.mTitle = title;
         this.mContent = content;
@@ -70,7 +70,7 @@ public class Note {
         return "{Note title=" + mTitle + " content=" + mContent + "}";
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return Strings.isNullOrEmpty(mTitle) && Strings.isNullOrEmpty(mContent);
     }
 }
