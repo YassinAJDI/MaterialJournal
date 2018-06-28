@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.data.source.NotesDataSource;
 
+import java.util.List;
+
 import timber.log.Timber;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -35,8 +37,20 @@ public class NotesLocalDataSource implements NotesDataSource {
     }
 
     @Override
-    public void getNotes(@NonNull LoadNotesCallback callback) {
+    public void getNotes(@NonNull final LoadNotesCallback callback) {
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final List<Note> notes = mNotesDao.getNotes();
+                if (notes.isEmpty()) {
+                    // This will be called if the table is new or just empty.
+                    callback.onDataNotAvailable();
+                } else {
+                    callback.onNotesLoaded(notes);
+                }
+            }
+        }).start();
     }
 
     @Override
