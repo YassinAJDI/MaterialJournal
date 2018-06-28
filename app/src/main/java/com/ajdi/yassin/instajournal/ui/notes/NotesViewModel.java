@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.data.source.NotesDataSource;
 import com.ajdi.yassin.instajournal.data.source.NotesRepository;
+import com.ajdi.yassin.instajournal.utils.SingleLiveEvent;
 
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class NotesViewModel extends AndroidViewModel {
 
     // These observable fields will update Views automatically
     public final ObservableList<Note> items = new ObservableArrayList<>();
+
+    private final SingleLiveEvent<Void> mNewNoteEvent = new SingleLiveEvent<>();
 
     private final NotesRepository mNotesRepository;
 
@@ -74,4 +77,7 @@ public class NotesViewModel extends AndroidViewModel {
 
     }
 
+    SingleLiveEvent<Void> getNewNoteEvent() {
+        return mNewNoteEvent;
+    }
 }

@@ -15,6 +15,8 @@ import com.ajdi.yassin.instajournal.utils.ViewModelFactory;
  */
 public class AddEditNoteActivity extends AppCompatActivity {
 
+    public static final int REQUEST_CODE = 1;
+
     AddEditNoteViewModel mViewModel;
 
     @Override
