@@ -61,6 +61,17 @@ public class AddEditNoteFragment extends Fragment {
         setupActionBar();
 
         setupSnackbar();
+
+        loadData();
+    }
+
+    private void loadData() {
+        // Add or edit an existing note?
+        if (getArguments() != null) {
+            mViewModel.start(getArguments().getString(ARGUMENT_EDIT_NOTE_ID));
+        } else {
+            mViewModel.start(null);
+        }
     }
 
     private void setupActionBar() {

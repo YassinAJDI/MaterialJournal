@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/title_hint"
                     android:maxLines="1"
-                    android:text="@{viewmodel.title}"
+                    android:text="@={viewmodel.title}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
                 <EditText
@@ -47,7 +47,7 @@
                     android:layout_height="350dp"
                     android:gravity="top"
                     android:hint="@string/content_hint"
-                    android:text="@{viewmodel.content}" />
+                    android:text="@={viewmodel.content}" />
 
             </LinearLayout>
         </ScrollView>

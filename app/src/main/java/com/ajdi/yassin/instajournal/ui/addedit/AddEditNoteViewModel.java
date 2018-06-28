@@ -32,14 +32,37 @@ public class AddEditNoteViewModel extends AndroidViewModel {
 
     private final NotesRepository mNotesRepository;
 
-    private boolean mIsNewNote;
-
     @Nullable
     private String mNoteId;
+
+    private boolean mIsNewNote;
+
+    private boolean mIsDataLoaded = false;
 
     public AddEditNoteViewModel(@NonNull Application context, NotesRepository notesRepository) {
         super(context);
         mNotesRepository = notesRepository;
+    }
+
+    public void start(String noteId) {
+        if (dataLoading.get()) {
+            // Already loading, ignore.
+            return;
+        }
+        mNoteId = noteId;
+        if (noteId == null) {
+            // No need to populate, it's a new note
+            mIsNewNote = true;
+            return;
+        }
+        if (mIsDataLoaded) {
+            // No need to populate, already have data.
+            return;
+        }
+        mIsNewNote = false;
+        dataLoading.set(true);
+
+        //mNotesRepository.getNote(noteId, this);
     }
 
     SingleLiveEvent<Void> getNoteUpdatedEvent() {
