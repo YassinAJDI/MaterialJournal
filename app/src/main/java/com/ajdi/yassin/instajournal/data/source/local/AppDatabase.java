@@ -1,4 +1,4 @@
-package com.ajdi.yassin.instajournal.data.source;
+package com.ajdi.yassin.instajournal.data.source.local;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
