@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.content.Context;
 import android.databinding.ObservableArrayList;
+import android.databinding.ObservableBoolean;
 import android.databinding.ObservableList;
 import android.support.annotation.NonNull;
 
@@ -12,6 +13,7 @@ import com.ajdi.yassin.instajournal.data.source.NotesDataSource;
 import com.ajdi.yassin.instajournal.data.source.NotesRepository;
 import com.ajdi.yassin.instajournal.utils.SingleLiveEvent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import timber.log.Timber;
@@ -25,6 +27,8 @@ public class NotesViewModel extends AndroidViewModel {
     public final ObservableList<Note> items = new ObservableArrayList<>();
 
     private final SingleLiveEvent<Void> mNewNoteEvent = new SingleLiveEvent<>();
+
+    public final ObservableBoolean dataLoading = new ObservableBoolean(false);
 
     private final NotesRepository mNotesRepository;
 
@@ -42,27 +46,27 @@ public class NotesViewModel extends AndroidViewModel {
     }
 
     private void loadNotes(boolean forceUpdate) {
-        loadNotes(false, true);
+        loadNotes(forceUpdate, true);
     }
 
     private void loadNotes(boolean forceUpdate, final boolean showLoadingUI) {
         Timber.d("Loading notes.");
         if (showLoadingUI) {
-            // TODO: 27/06/2018 show loading
+            dataLoading.set(true);
         }
         if (forceUpdate) {
-            mNotesRepository.refreshNotes();
+            //mNotesRepository.refreshNotes();
         }
 
         mNotesRepository.getNotes(new NotesDataSource.LoadNotesCallback() {
             @Override
             public void onNotesLoaded(List<Note> notes) {
                 Timber.d("Notes loaded:" + notes.size());
-                //List<Note> notesToShow = new ArrayList<>();
+                List<Note> notesToShow = new ArrayList<>();
 
 
                 if (showLoadingUI) {
-                    // TODO: 27/06/2018 stop loading
+                    dataLoading.set(false);
                 }
 
                 items.clear();

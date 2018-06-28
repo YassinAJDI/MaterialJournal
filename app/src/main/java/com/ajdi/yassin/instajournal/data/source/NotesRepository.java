@@ -6,6 +6,7 @@ import com.ajdi.yassin.instajournal.data.model.Note;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -42,35 +43,37 @@ public class NotesRepository implements NotesDataSource {
         return INSTANCE;
     }
 
-    public static void destroyInstance() {
-        INSTANCE = null;
-    }
-
     public void refreshNotes() {
     }
 
     @Override
-    public void getNotes(@NonNull LoadNotesCallback callback) {
+    public void getNotes(@NonNull final LoadNotesCallback callback) {
         checkNotNull(callback);
 
-        // this is just for test purpose
-
-//        List<Note> notes = Arrays.asList(
-//                new Note("Test 1", "content 1"),
-//                new Note("Test 2", "content 2"),
-//                new Note("Test 3", "content 3"),
-//                new Note("Test 4", "content 4"),
-//                new Note("Test 5", "content 5")
-//        );
-
-        callback.onNotesLoaded(new ArrayList<Note>());
-
-
         // Respond immediately with cache if available and not dirty
-//        if (mCachedNotes != null && !mCacheIsDirty) {
-//            callback.onNotesLoaded(new ArrayList<>(mCachedNotes.values()));
-//            return;
-//        }
+        if (mCachedNotes != null && !mCacheIsDirty) {
+            callback.onNotesLoaded(new ArrayList<>(mCachedNotes.values()));
+            return;
+        }
+
+        if (mCacheIsDirty) {
+            // If the cache is dirty we need to fetch new data from the network.
+
+        } else {
+            // Query the local storage if available. If not, query the network.
+            mNotesLocalDataSource.getNotes(new LoadNotesCallback() {
+                @Override
+                public void onNotesLoaded(List<Note> notes) {
+                    refreshCache(notes);
+                    callback.onNotesLoaded(new ArrayList<>(mCachedNotes.values()));
+                }
+
+                @Override
+                public void onDataNotAvailable() {
+                    // database is empty get data from remote db
+                }
+            });
+        }
     }
 
     @Override
@@ -112,5 +115,16 @@ public class NotesRepository implements NotesDataSource {
         } else {
             return mCachedNotes.get(noteId);
         }
+    }
+
+    private void refreshCache(List<Note> notes) {
+        if (mCachedNotes == null) {
+            mCachedNotes = new LinkedHashMap<>();
+        }
+        mCachedNotes.clear();
+        for (Note note : notes) {
+            mCachedNotes.put(note.getId(), note);
+        }
+        mCacheIsDirty = false;
     }
 }
