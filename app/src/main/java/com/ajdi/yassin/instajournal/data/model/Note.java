@@ -2,8 +2,11 @@ package com.ajdi.yassin.instajournal.data.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
+
+import com.google.common.base.Strings;
 
 @Entity(tableName = "note")
 public class Note {
@@ -27,6 +30,13 @@ public class Note {
      */
     public Note(@NonNull int id, String title, String content, long date) {
         this.mId = id;
+        this.mTitle = title;
+        this.mContent = content;
+        this.mDate = date;
+    }
+
+    @Ignore
+    public Note(String title, String content, long date) {
         this.mTitle = title;
         this.mContent = content;
         this.mDate = date;
@@ -58,5 +68,9 @@ public class Note {
 
     public String toString() {
         return "{Note title=" + mTitle + " content=" + mContent + "}";
+    }
+
+    public boolean isEmpty(){
+        return Strings.isNullOrEmpty(mTitle) && Strings.isNullOrEmpty(mContent);
     }
 }

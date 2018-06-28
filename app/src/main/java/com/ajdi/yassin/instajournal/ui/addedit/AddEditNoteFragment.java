@@ -72,11 +72,11 @@ public class AddEditNoteFragment extends Fragment {
 
     private void setupFab() {
         FloatingActionButton fab = getActivity().findViewById(R.id.fab_edit_note_done);
-        fab.setImageResource(R.drawable.ic_edit_black_24dp);
+        fab.setImageResource(R.drawable.ic_done_black_24dp);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //mViewModel.saveTask();
+                mViewModel.saveNote();
             }
         });
     }

@@ -7,8 +7,11 @@ import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.data.source.NotesRepository;
 import com.ajdi.yassin.instajournal.utils.SingleLiveEvent;
+
+import java.util.Date;
 
 /**
  * ViewModel for the Add/Edit screen.
@@ -35,5 +38,15 @@ public class AddEditNoteViewModel extends AndroidViewModel {
 
     SingleLiveEvent<Void> getNoteUpdatedEvent() {
         return mNoteUpdated;
+    }
+
+    // Called when clicking on fab.
+    void saveNote() {
+        Note note = new Note(title.get(), content.get(), new Date().getTime());
+        if (note.isEmpty()) {
+            //mSnackbarText.setValue(R.string.empty_task_message);
+            return;
+        }
+
     }
 }
