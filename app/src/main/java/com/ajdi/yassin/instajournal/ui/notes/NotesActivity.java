@@ -15,7 +15,7 @@ import com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteActivity;
 import com.ajdi.yassin.instajournal.utils.ActivityUtils;
 import com.ajdi.yassin.instajournal.utils.ViewModelFactory;
 
-public class NotesActivity extends AppCompatActivity {
+public class NotesActivity extends AppCompatActivity implements NotesNavigator{
 
     private NotesViewModel mViewModel;
 
@@ -37,11 +37,6 @@ public class NotesActivity extends AppCompatActivity {
                 addNewNote();
             }
         });
-    }
-
-    private void addNewNote() {
-        Intent intent = new Intent(this, AddEditNoteActivity.class);
-        startActivityForResult(intent, AddEditNoteActivity.REQUEST_CODE);
     }
 
     private void setupToolbar() {
@@ -68,5 +63,11 @@ public class NotesActivity extends AppCompatActivity {
         ViewModelFactory factory = ViewModelFactory.getInstance(activity.getApplication());
 
         return ViewModelProviders.of(activity, factory).get(NotesViewModel.class);
+    }
+
+    @Override
+    public void addNewNote() {
+        Intent intent = new Intent(this, AddEditNoteActivity.class);
+        startActivityForResult(intent, AddEditNoteActivity.REQUEST_CODE);
     }
 }
