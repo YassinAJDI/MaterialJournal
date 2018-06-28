@@ -16,11 +16,14 @@ import com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteFragment;
 import com.ajdi.yassin.instajournal.utils.ActivityUtils;
 import com.ajdi.yassin.instajournal.utils.ViewModelFactory;
 
+import static com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteActivity.ADD_EDIT_RESULT_OK;
 import static com.ajdi.yassin.instajournal.ui.notedetail.NoteDetailFragment.REQUEST_EDIT_NOTE;
 
 public class NoteDetailActivity extends AppCompatActivity implements NoteDetailNavigator {
 
     public static final String EXTRA_NOTE_ID = "NOTE_ID";
+
+    public static final int EDIT_RESULT_OK = RESULT_FIRST_USER + 3;
 
     private NoteDetailViewModel mViewModel;
 
@@ -78,6 +81,18 @@ public class NoteDetailActivity extends AppCompatActivity implements NoteDetailN
         ViewModelFactory factory = ViewModelFactory.getInstance(activity.getApplication());
 
         return ViewModelProviders.of(activity, factory).get(NoteDetailViewModel.class);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_EDIT_NOTE) {
+            // If the note was edited successfully, go back to the list.
+            if (resultCode == ADD_EDIT_RESULT_OK) {
+                // If the result comes from the add/edit screen, it's an edit.
+                setResult(EDIT_RESULT_OK);
+                finish();
+            }
+        }
     }
 
     @Override
