@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.ajdi.yassin.instajournal.R;
-import com.ajdi.yassin.instajournal.ui.notes.ViewModelFactory;
+import com.ajdi.yassin.instajournal.utils.ViewModelFactory;
 
 /**
  * Displays an add or edit task screen.

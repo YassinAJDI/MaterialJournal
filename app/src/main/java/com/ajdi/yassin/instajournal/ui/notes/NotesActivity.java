@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.utils.ActivityUtils;
+import com.ajdi.yassin.instajournal.utils.ViewModelFactory;
 
 public class NotesActivity extends AppCompatActivity {
 

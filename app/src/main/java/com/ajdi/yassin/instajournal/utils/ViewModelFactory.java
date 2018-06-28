@@ -1,11 +1,11 @@
-package com.ajdi.yassin.instajournal.ui.notes;
+package com.ajdi.yassin.instajournal.utils;
 
 import android.app.Application;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 
 import com.ajdi.yassin.instajournal.data.source.NotesRepository;
-import com.ajdi.yassin.instajournal.utils.Injection;
+import com.ajdi.yassin.instajournal.ui.notes.NotesViewModel;
 
 
 /**
