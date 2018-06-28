@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.ajdi.yassin.instajournal.data.model.Note;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -61,7 +62,7 @@ public class NotesRepository implements NotesDataSource {
 //                new Note("Test 5", "content 5")
 //        );
 
-        callback.onNotesLoaded(null);
+        callback.onNotesLoaded(new ArrayList<Note>());
 
 
         // Respond immediately with cache if available and not dirty

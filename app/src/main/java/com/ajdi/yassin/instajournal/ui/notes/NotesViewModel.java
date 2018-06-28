@@ -73,4 +73,5 @@ public class NotesViewModel extends AndroidViewModel {
         });
 
     }
+
 }
