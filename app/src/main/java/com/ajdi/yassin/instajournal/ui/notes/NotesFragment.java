@@ -90,8 +90,8 @@ public class NotesFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //mTasksViewModel.addNewTask();
                 Snackbar.make(getView(), "Working", Snackbar.LENGTH_LONG).show();
+                mNotesViewModel.addNewNote();
             }
         });
     }

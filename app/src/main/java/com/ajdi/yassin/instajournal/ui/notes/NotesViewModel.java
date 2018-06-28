@@ -80,4 +80,11 @@ public class NotesViewModel extends AndroidViewModel {
     SingleLiveEvent<Void> getNewNoteEvent() {
         return mNewNoteEvent;
     }
+
+    /**
+     * Called by the Data Binding library when user click FAB button.
+     */
+    public void addNewNote() {
+        mNewNoteEvent.call();
+    }
 }
