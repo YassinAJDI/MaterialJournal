@@ -1,13 +1,14 @@
 package com.ajdi.yassin.instajournal.ui.addedit;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.ajdi.yassin.instajournal.R;
+import com.ajdi.yassin.instajournal.utils.ActivityUtils;
 import com.ajdi.yassin.instajournal.utils.ViewModelFactory;
 
 /**
@@ -39,14 +40,28 @@ public class AddEditNoteActivity extends AppCompatActivity {
     }
 
     private void setupViewFragment() {
+        AddEditNoteFragment addEditNoteFragment = (AddEditNoteFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.fragment_container);
 
+        if (addEditNoteFragment == null) {
+            addEditNoteFragment = AddEditNoteFragment.newInstance();
+
+            // Send the note ID to the fragment
+            Bundle bundle = new Bundle();
+            bundle.putString(AddEditNoteFragment.ARGUMENT_EDIT_NOTE_ID,
+                    getIntent().getStringExtra(AddEditNoteFragment.ARGUMENT_EDIT_NOTE_ID));
+            addEditNoteFragment.setArguments(bundle);
+        }
+
+        ActivityUtils.replaceFragmentInActivity(getSupportFragmentManager(),
+                addEditNoteFragment, R.id.fragment_container);
     }
 
     private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-       // actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
     }
 }
