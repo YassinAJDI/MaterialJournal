@@ -1,7 +1,9 @@
 package com.ajdi.yassin.instajournal.ui.addedit;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,11 +14,13 @@ import com.ajdi.yassin.instajournal.utils.ActivityUtils;
 import com.ajdi.yassin.instajournal.utils.ViewModelFactory;
 
 /**
- * Displays an add or edit task screen.
+ * Displays an add or edit note screen.
  */
-public class AddEditNoteActivity extends AppCompatActivity {
+public class AddEditNoteActivity extends AppCompatActivity implements AddEditNoteNavigator {
 
     public static final int REQUEST_CODE = 1;
+
+    public static final int ADD_EDIT_RESULT_OK = RESULT_FIRST_USER + 1;
 
     AddEditNoteViewModel mViewModel;
 
@@ -32,6 +36,12 @@ public class AddEditNoteActivity extends AppCompatActivity {
         mViewModel = obtainViewModel(this);
 
         // The activity observes the navigation events in the ViewModel
+        mViewModel.getNoteUpdatedEvent().observe(this, new Observer<Void>() {
+            @Override
+            public void onChanged(@Nullable Void aVoid) {
+                AddEditNoteActivity.this.onNoteSaved();
+            }
+        });
 
     }
 
@@ -66,5 +76,11 @@ public class AddEditNoteActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
+    }
+
+    @Override
+    public void onNoteSaved() {
+        setResult(ADD_EDIT_RESULT_OK);
+        finish();
     }
 }
