@@ -30,6 +30,9 @@ public class AddEditNoteActivity extends AppCompatActivity {
         setupViewFragment();
 
         mViewModel = obtainViewModel(this);
+
+        // The activity observes the navigation events in the ViewModel
+
     }
 
     public static AddEditNoteViewModel obtainViewModel(FragmentActivity activity) {
