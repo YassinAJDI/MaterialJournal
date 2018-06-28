@@ -5,6 +5,8 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 
 import com.ajdi.yassin.instajournal.data.source.NotesRepository;
+import com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteViewModel;
+import com.ajdi.yassin.instajournal.ui.notedetail.NoteDetailViewModel;
 import com.ajdi.yassin.instajournal.ui.notes.NotesViewModel;
 
 
@@ -46,6 +48,12 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
         if (modelClass.isAssignableFrom(NotesViewModel.class)) {
             //noinspection unchecked
             return (T) new NotesViewModel(mApplication, mNotesRepository);
+        } else if (modelClass.isAssignableFrom(NoteDetailViewModel.class)) {
+            //noinspection unchecked
+            return (T) new NoteDetailViewModel(mApplication, mNotesRepository);
+        } else if (modelClass.isAssignableFrom(AddEditNoteViewModel.class)) {
+            //noinspection unchecked
+            return (T) new AddEditNoteViewModel(mApplication, mNotesRepository);
         }
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
     }
