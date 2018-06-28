@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.data.model.Note;
+import com.ajdi.yassin.instajournal.data.source.NotesDataSource;
 import com.ajdi.yassin.instajournal.data.source.NotesRepository;
 import com.ajdi.yassin.instajournal.utils.SingleLiveEvent;
 import com.ajdi.yassin.instajournal.utils.SnackbarMessage;
@@ -18,7 +19,7 @@ import java.util.Date;
 /**
  * ViewModel for the Add/Edit screen.
  */
-public class AddEditNoteViewModel extends AndroidViewModel {
+public class AddEditNoteViewModel extends AndroidViewModel implements NotesDataSource.GetNoteCallback {
 
     public final ObservableField<String> title = new ObservableField<>();
 
@@ -62,7 +63,20 @@ public class AddEditNoteViewModel extends AndroidViewModel {
         mIsNewNote = false;
         dataLoading.set(true);
 
-        //mNotesRepository.getNote(noteId, this);
+        mNotesRepository.getNote(noteId, this);
+    }
+
+    @Override
+    public void onNoteLoaded(Note note) {
+        title.set(note.getTitle());
+        content.set(note.getContent());
+        dataLoading.set(false);
+        mIsDataLoaded = true;
+    }
+
+    @Override
+    public void onDataNotAvailable() {
+        dataLoading.set(false);
     }
 
     SingleLiveEvent<Void> getNoteUpdatedEvent() {

@@ -26,7 +26,6 @@ public class AddEditNoteFragment extends Fragment {
 
     private AddEditNoteViewModel mViewModel;
 
-
     public AddEditNoteFragment() {
         // Required empty public constructor
     }
