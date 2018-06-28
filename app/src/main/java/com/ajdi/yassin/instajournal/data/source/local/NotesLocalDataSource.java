@@ -54,8 +54,18 @@ public class NotesLocalDataSource implements NotesDataSource {
     }
 
     @Override
-    public void getNote(String noteId, @NonNull GetNoteCallback callback) {
-
+    public void getNote(@NonNull final String noteId, @NonNull final GetNoteCallback callback) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final Note note = mNotesDao.getNoteById(noteId);
+                if (note != null) {
+                    callback.onNoteLoaded(note);
+                } else {
+                    callback.onDataNotAvailable();
+                }
+            }
+        }).start();
     }
 
     @Override

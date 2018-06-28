@@ -69,7 +69,7 @@ public class NotesRepository implements NotesDataSource {
     }
 
     @Override
-    public void getNote(String noteId, @NonNull GetNoteCallback callback) {
+    public void getNote(String noteId, @NonNull final GetNoteCallback callback) {
         checkNotNull(noteId);
         checkNotNull(callback);
 
@@ -82,10 +82,24 @@ public class NotesRepository implements NotesDataSource {
         }
 
         // Load from server/persisted if needed.
+        // Is the note in the local data source? If not, query the network.
+        mNotesLocalDataSource.getNote(noteId, new GetNoteCallback() {
+            @Override
+            public void onNoteLoaded(Note note) {
+                // Do in memory cache update to keep the app UI up to date
+                if (mCachedNotes == null) {
+                    mCachedNotes = new LinkedHashMap<>();
+                }
+                mCachedNotes.put(note.getId(), note);
 
-        // Is the task in the local data source? If not, query the network.
-        // TODO: 27/06/2018 implement loading from room
+                callback.onNoteLoaded(note);
+            }
 
+            @Override
+            public void onDataNotAvailable() {
+
+            }
+        });
     }
 
     @Override

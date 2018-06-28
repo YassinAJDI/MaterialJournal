@@ -9,9 +9,6 @@ import android.support.annotation.NonNull;
 import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.data.source.NotesDataSource;
 import com.ajdi.yassin.instajournal.data.source.NotesRepository;
-import com.google.android.gms.tasks.Task;
-
-import javax.sql.DataSource;
 
 public class NoteDetailViewModel extends AndroidViewModel implements NotesDataSource.GetNoteCallback {
 
@@ -32,6 +29,7 @@ public class NoteDetailViewModel extends AndroidViewModel implements NotesDataSo
 
     public void start(String noteId) {
         if (noteId != null) {
+            mIsDataLoading = true;
             mNotesRepository.getNote(noteId, this);
         }
     }
@@ -44,7 +42,8 @@ public class NoteDetailViewModel extends AndroidViewModel implements NotesDataSo
 
     @Override
     public void onDataNotAvailable() {
-        // show message when data not available
+        setNote(null);
+        mIsDataLoading = false;
     }
 
     public void setNote(Note note) {
