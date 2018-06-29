@@ -9,40 +9,49 @@
     tools:context=".ui.notes.NotesActivity"
     tools:openDrawer="start">
 
-    <LinearLayout
+    <!--<android.support.design.widget.AppBarLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+
+    <!--<include layout="@layout/toolbar" />-->
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <android.support.design.widget.AppBarLayout
+        <FrameLayout
+            android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent" />
 
-            <include layout="@layout/toolbar" />
-        </android.support.design.widget.AppBarLayout>
-
-        <android.support.design.widget.CoordinatorLayout
-            android:id="@+id/coordinatorLayout"
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:backgroundTint="@color/colorPrimary"
+            app:fabAlignmentMode="center"
+            app:fabAttached="true"
+            app:navigationIcon="@drawable/ic_add_black_24dp" />
 
-            <FrameLayout
-                android:id="@+id/fragment_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+        <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/fab_add_note"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="@dimen/fab_margin"-->
+        <!--android:src="@drawable/ic_add_black_24dp"-->
+        <!--app:fabSize="normal"-->
+        <!--app:layout_anchor="@id/bottom_app_bar" />-->
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab_add_note"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/fab_margin"
-                android:src="@drawable/ic_add_black_24dp"
-                app:fabSize="normal"
-                app:layout_anchor="@id/fragment_container"
-                app:layout_anchorGravity="bottom|right|end" />
-        </android.support.design.widget.CoordinatorLayout>
-
-    </LinearLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_anchor="@id/bottom_app_bar"
+            android:src="@drawable/ic_add_black_24dp" />
+    </android.support.design.widget.CoordinatorLayout>
 
     <!-- Navigation Drawer -->
     <android.support.design.widget.NavigationView

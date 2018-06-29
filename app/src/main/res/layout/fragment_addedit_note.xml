@@ -32,23 +32,17 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:visibility="@{viewmodel.dataLoading ? View.GONE : View.VISIBLE}">
 
-                <EditText
+                <android.support.design.widget.TextInputLayout
                     android:id="@+id/edit_add_note_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/title_hint"
-                    android:maxLines="1"
-                    android:text="@={viewmodel.title}"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/Widget.TextInputLayout"
                     android:hint="This is a hint">
 
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@={viewmodel.title}"
                         android:inputType="text"
                         android:maxLines="1" />
                 </android.support.design.widget.TextInputLayout>
@@ -78,6 +72,7 @@
                     android:id="@+id/edit_add_note_content"
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
+                    android:inputType="text"
                     android:gravity="top"
                     android:hint="@string/content_hint"
                     android:text="@={viewmodel.content}" />

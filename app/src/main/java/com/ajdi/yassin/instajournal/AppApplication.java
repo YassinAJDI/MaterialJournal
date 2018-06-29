@@ -1,10 +1,10 @@
 package com.ajdi.yassin.instajournal;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import timber.log.Timber;
 
-public class AppApplication extends Application {
+public class AppApplication extends MultiDexApplication {
 
     @Override
     public void onCreate() {
