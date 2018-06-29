@@ -21,6 +21,8 @@ import com.ajdi.yassin.instajournal.databinding.FragmentAddeditNoteBinding;
 import com.ajdi.yassin.instajournal.utils.SnackbarMessage;
 import com.ajdi.yassin.instajournal.utils.SnackbarUtils;
 
+import timber.log.Timber;
+
 /**
  * Main UI for the add note screen. Users can enter note details.
  */
@@ -31,6 +33,8 @@ public class AddEditNoteFragment extends Fragment {
     public final static int PICK_PHOTO_CODE = 1046;
 
     private AddEditNoteViewModel mViewModel;
+
+    private FragmentAddeditNoteBinding mNotebinding;
 
     public AddEditNoteFragment() {
         // Required empty public constructor
@@ -43,17 +47,16 @@ public class AddEditNoteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentAddeditNoteBinding binding =
-                FragmentAddeditNoteBinding.inflate(inflater, container, false);
+        mNotebinding = FragmentAddeditNoteBinding.inflate(inflater, container, false);
 
         mViewModel = AddEditNoteActivity.obtainViewModel(getActivity());
 
-        binding.setViewmodel(mViewModel);
+        mNotebinding.setViewmodel(mViewModel);
 
         setHasOptionsMenu(true);
         setRetainInstance(false);
 
-        return binding.getRoot();
+        return mNotebinding.getRoot();
     }
 
     @Override
@@ -74,9 +77,11 @@ public class AddEditNoteFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Timber.d("onActivityResult");
         if (requestCode == PICK_PHOTO_CODE && data != null) {
             Uri photoUri = data.getData();
-            Snackbar.make(getView(), photoUri.toString(), Snackbar.LENGTH_LONG);
+            Timber.d("getting photoUri: " + photoUri.toString());
+            Snackbar.make(getView(), photoUri.toString(), Snackbar.LENGTH_LONG).show();
             // Do something with the photo based on Uri
             //Bitmap selectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photoUri);
             // Load the selected image into a preview
@@ -86,16 +91,20 @@ public class AddEditNoteFragment extends Fragment {
     }
 
     private void setupImagePicker() {
-        // Create intent for picking a photo from the gallery
-        Intent intent = new Intent(Intent.ACTION_PICK,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        mNotebinding.buttonPick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Timber.d("button clicked");
+                // Create intent for picking a photo from the gallery
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
-        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
-        // So as long as the result is not null, it's safe to use the intent.
-        if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
-            // Bring up gallery to select a photo
-            startActivityForResult(intent, PICK_PHOTO_CODE);
-        }
+                if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    // Bring up gallery to select a photo
+                    startActivityForResult(intent, PICK_PHOTO_CODE);
+                }
+            }
+        });
     }
 
     private void loadData() {
