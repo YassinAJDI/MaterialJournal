@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.databinding.FragmentAddeditNoteBinding;
-import com.ajdi.yassin.instajournal.utils.ImageUtils;
+import com.ajdi.yassin.instajournal.utils.GlideApp;
 import com.ajdi.yassin.instajournal.utils.SnackbarMessage;
 import com.ajdi.yassin.instajournal.utils.SnackbarUtils;
 
@@ -91,10 +91,16 @@ public class AddEditNoteFragment extends Fragment {
             Uri photoUri = data.getData();
             Timber.d("Selectted image Uri: " + photoUri.toString());
             // Do something with the photo based on Uri
-            ImageUtils.getPathFromURI(getContext(), photoUri);
+            //String path = ImageUtils.getPathFromURI(getContext(), photoUri);
+            //Timber.d("Selectted image Path: " + path);
+            //File f = new File(path);
+            //Uri uri = Uri.fromFile(f);
             // Load the selected image into a preview
             //ImageView ivPreview = (ImageView) findViewById(R.id.ivPreview);
             //ivPreview.setImageBitmap(selectedImage);
+            GlideApp.with(this)
+                    .load(photoUri)
+                    .into(mNotebinding.imageNote);
         }
     }
 
