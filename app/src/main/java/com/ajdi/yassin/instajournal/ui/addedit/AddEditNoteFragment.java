@@ -23,6 +23,8 @@ import com.ajdi.yassin.instajournal.utils.SnackbarUtils;
 
 import timber.log.Timber;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * Main UI for the add note screen. Users can enter note details.
  */
@@ -71,14 +73,21 @@ public class AddEditNoteFragment extends Fragment {
 
         loadData();
 
-        // Trigger gallery selection for a photo
-        setupImagePicker();
+        mNotebinding.buttonPick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Trigger gallery selection for a photo
+                openGallery();
+            }
+        });
+
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         Timber.d("onActivityResult");
-        if (requestCode == PICK_PHOTO_CODE && data != null) {
+        if (requestCode == PICK_PHOTO_CODE && resultCode == RESULT_OK && data != null) {
+
             Uri photoUri = data.getData();
             Timber.d("getting photoUri: " + photoUri.toString());
             Snackbar.make(getView(), photoUri.toString(), Snackbar.LENGTH_LONG).show();
@@ -90,21 +99,16 @@ public class AddEditNoteFragment extends Fragment {
         }
     }
 
-    private void setupImagePicker() {
-        mNotebinding.buttonPick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Timber.d("button clicked");
-                // Create intent for picking a photo from the gallery
-                Intent intent = new Intent(Intent.ACTION_PICK,
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+    private void openGallery() {
+        // Create intent for picking a photo from the gallery
+        Intent intent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
 
-                if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
-                    // Bring up gallery to select a photo
-                    startActivityForResult(intent, PICK_PHOTO_CODE);
-                }
-            }
-        });
+        if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+            // Bring up gallery to select a photo
+            startActivityForResult(intent, PICK_PHOTO_CODE);
+        }
     }
 
     private void loadData() {
