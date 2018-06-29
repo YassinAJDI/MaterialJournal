@@ -41,11 +41,32 @@
                     android:text="@={viewmodel.title}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-                <Button
-                    android:id="@+id/button_pick"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="This is a hint">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLines="1" />
+                </android.support.design.widget.TextInputLayout>
+
+                <Button
+                    android:id="@+id/button_pick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Pick an image" />
+
+                <android.support.design.button.MaterialButton
+                    android:id="@+id/cancel_button"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="pick an image"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp" />
 
                 <ImageView
                     android:id="@+id/image_note"
