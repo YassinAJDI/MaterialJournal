@@ -8,7 +8,6 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.databinding.FragmentAddeditNoteBinding;
+import com.ajdi.yassin.instajournal.utils.ImageUtils;
 import com.ajdi.yassin.instajournal.utils.SnackbarMessage;
 import com.ajdi.yassin.instajournal.utils.SnackbarUtils;
 
@@ -89,10 +89,9 @@ public class AddEditNoteFragment extends Fragment {
         if (requestCode == PICK_PHOTO_CODE && resultCode == RESULT_OK && data != null) {
 
             Uri photoUri = data.getData();
-            Timber.d("getting photoUri: " + photoUri.toString());
-            Snackbar.make(getView(), photoUri.toString(), Snackbar.LENGTH_LONG).show();
+            Timber.d("Selectted image Uri: " + photoUri.toString());
             // Do something with the photo based on Uri
-            //Bitmap selectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photoUri);
+            ImageUtils.getPathFromURI(getContext(), photoUri);
             // Load the selected image into a preview
             //ImageView ivPreview = (ImageView) findViewById(R.id.ivPreview);
             //ivPreview.setImageBitmap(selectedImage);
@@ -107,7 +106,7 @@ public class AddEditNoteFragment extends Fragment {
 
         if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
             // Bring up gallery to select a photo
-            startActivityForResult(intent, PICK_PHOTO_CODE);
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_PHOTO_CODE);
         }
     }
 
