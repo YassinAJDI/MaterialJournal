@@ -17,9 +17,11 @@ import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import timber.log.Timber;
 
 /**
@@ -63,6 +65,8 @@ public class NotesFragment extends Fragment {
         setupListAdapter();
 
         setupSnackbar();
+
+        setupRefreshLayout();
     }
 
     @Override
@@ -80,6 +84,15 @@ public class NotesFragment extends Fragment {
         mNotesAdapter = new NotesAdapter(getActivity(), new ArrayList<Note>(0), mNotesViewModel);
 
         recyclerView.setAdapter(mNotesAdapter);
+    }
+
+    private void setupRefreshLayout() {
+        final SwipeRefreshLayout swipeRefreshLayout = mFragmentNotesBinding.refreshLayout;
+        swipeRefreshLayout.setColorSchemeColors(
+                ContextCompat.getColor(getActivity(), R.color.colorPrimary),
+                ContextCompat.getColor(getActivity(), R.color.colorAccent),
+                ContextCompat.getColor(getActivity(), R.color.colorPrimaryDark)
+        );
     }
 
     private void setupFab() {

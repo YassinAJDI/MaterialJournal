@@ -41,7 +41,6 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
 
         setUpBottomDrawer();
 
-
         mViewModel = obtainViewModel(this);
 
         // Subscribe to add new note event
@@ -132,5 +131,11 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
         Intent intent = new Intent(this, NoteDetailActivity.class);
         intent.putExtra(NoteDetailActivity.EXTRA_NOTE_ID, noteId);
         startActivityForResult(intent, AddEditNoteActivity.REQUEST_CODE);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
     }
 }
