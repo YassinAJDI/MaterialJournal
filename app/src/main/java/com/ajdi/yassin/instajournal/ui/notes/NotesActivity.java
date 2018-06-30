@@ -135,6 +135,11 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
 
     @Override
     public void onBackPressed() {
+
+        if (bottomDrawerBehavior.getState() != BottomSheetBehavior.STATE_HIDDEN) {
+            bottomDrawerBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+            return;
+        }
         super.onBackPressed();
 
     }
