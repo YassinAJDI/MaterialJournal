@@ -20,7 +20,7 @@
             tools:src="@color/browser_actions_bg_grey" />
 
         <TextView
-            android:id="@+id/text_article_title"
+            android:id="@+id/text_title"
             style="@style/CardArticleItemText.Headline"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
             android:layout_marginRight="1dp"
             android:src="@drawable/twotone_share_black_48"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_article_title" />
+            app:layout_constraintTop_toBottomOf="@+id/text_title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
