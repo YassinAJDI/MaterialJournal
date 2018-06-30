@@ -1,15 +1,18 @@
 package com.ajdi.yassin.instajournal.ui.notes;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.databinding.ItemNoteBinding;
+import com.ajdi.yassin.instajournal.utils.GlideApp;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
 public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -18,8 +21,11 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private List<Note> mNotes;
 
-    public NotesAdapter(List<Note> notes, NotesViewModel notesViewModel) {
+    private Context mContext;
+
+    public NotesAdapter(Context context, List<Note> notes, NotesViewModel notesViewModel) {
         mNotesViewModel = notesViewModel;
+        mContext = context;
         replaceData(notes);
     }
 
@@ -51,6 +57,11 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         noteViewHolder.binding.setListener(userActionsListener);
         noteViewHolder.binding.setNote(note);
+        GlideApp.with(mContext)
+                .load("https://lh3.googleusercontent.com/-xT9nbe3isBs/WxNLkWcpSHI/AAAAAAAAAic/pulWUZTPWooItSTuxghGgjt9dhV2kzf9gCEwYBhgL/w140-h140-p/4711f20662911d1ff51216d692c1354025357acf_hq.jpg")
+                .apply(new RequestOptions().circleCrop())
+                .into(noteViewHolder.binding.imageUserIcon);
+
         noteViewHolder.binding.executePendingBindings();
     }
 
