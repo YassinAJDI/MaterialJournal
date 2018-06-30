@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteActivity;
@@ -11,10 +12,11 @@ import com.ajdi.yassin.instajournal.ui.notedetail.NoteDetailActivity;
 import com.ajdi.yassin.instajournal.utils.ActivityUtils;
 import com.ajdi.yassin.instajournal.utils.UiUtils;
 import com.ajdi.yassin.instajournal.utils.ViewModelFactory;
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
@@ -24,6 +26,10 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
 
     private NotesViewModel mViewModel;
 
+    private BottomAppBar mBar;
+
+    private BottomSheetBehavior<View> bottomDrawerBehavior;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +38,11 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
         setupToolbar();
 
         setupViewFragment();
+
+        setupBottomBar();
+
+        setUpBottomDrawer();
+
 
         mViewModel = obtainViewModel(this);
 
@@ -54,9 +65,29 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
         });
     }
 
+    private void setUpBottomDrawer() {
+        View bottomDrawer = findViewById(R.id.bottom_drawer);
+        bottomDrawerBehavior = BottomSheetBehavior.from(bottomDrawer);
+        bottomDrawerBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+
+        mBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomDrawerBehavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
+            }
+        });
+        mBar.setNavigationIcon(R.drawable.ic_menu_black_24dp);
+        //bar.replaceMenu(R.menu.demo_primary);
+    }
+
+    private void setupBottomBar() {
+        mBar = findViewById(R.id.bottom_app_bar);
+        setSupportActionBar(mBar);
+    }
+
     private void setupToolbar() {
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
