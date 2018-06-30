@@ -35,8 +35,6 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
 
-        setupToolbar();
-
         setupViewFragment();
 
         setupBottomBar();
@@ -83,13 +81,6 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
     private void setupBottomBar() {
         mBar = findViewById(R.id.bottom_app_bar);
         setSupportActionBar(mBar);
-    }
-
-    private void setupToolbar() {
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null)
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void setupViewFragment() {
