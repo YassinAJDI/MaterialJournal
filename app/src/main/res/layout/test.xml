@@ -66,7 +66,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_publisher_icon"
-                tools:text="Breaking news title" />
+                tools:text="Poverty To Empowerment in Chicago." />
 
             <ImageView
                 android:id="@+id/image_article_image"

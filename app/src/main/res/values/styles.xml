@@ -90,11 +90,9 @@
 
     <style name="ArticleDetailsTime" parent="MetaDataText.PublishTime" />
 
-    <style name="ArticleDetailsTitle">
-        <item name="fontWeight">500</item>
-        <item name="android:textSize">20sp</item>
+    <style name="ArticleDetailsTitle" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="android:textColor">#ff000000</item>
-        <item name="android:lineSpacingExtra">5dp</item>
+        <item name="fontFamily">@font/merriweather_black_italic</item>
     </style>
 
     <style name="ArticleDetailsContent">
