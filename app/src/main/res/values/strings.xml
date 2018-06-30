@@ -12,8 +12,8 @@
     <!--actions-->
     <string name="action_add_notes">Add a Note item +</string>
     <string name="action_refresh">Refresh</string>
-    <string name="nav_favorites">Favorite Notes</string>
-    <string name="nav_trashed">Trashed notes</string>
-    <string name="nav_all_notes">All Notes</string>
+    <string name="nav_favorites">Starred</string>
+    <string name="nav_trashed">Trash</string>
+    <string name="nav_all_notes">All notes</string>
 
 </resources>
