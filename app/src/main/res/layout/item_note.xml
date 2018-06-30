@@ -25,7 +25,6 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:onClick="@{() -> listener.onNoteClicked(note)}"
-        app:cardBackgroundColor="?attr/colorPrimaryDark"
         app:cardCornerRadius="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,6 +54,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="This is a pretty long title, testing for some bugs " />
+
+            <ImageView
+                android:id="@+id/card_action_share_button"
+                style="@style/CardArticleActionIcon"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:src="@drawable/twotone_share_black_48"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_note" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
