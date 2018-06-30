@@ -86,24 +86,23 @@
         <item name="android:layout_height">@dimen/article_publisher_icon_size</item>
     </style>
 
-    <style name="ArticleDetailsPublisherName" parent="TextAppearance.MaterialComponents.Body1">$
-        <item name="fontFamily">@font/merriweather</item>
-        <item name="android:singleLine">true</item>
-    </style>
-
-    <style name="ArticleDetailsBy" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="fontFamily">@font/libre_franklin_thin</item>
+    <style name="ArticleDetailsPublisherName" parent="TextAppearance.MaterialComponents.Subtitle1">$
+        <item name="fontFamily">@font/rubik_medium</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textColor">@color/colorAccent</item>
         <item name="android:singleLine">true</item>
     </style>
 
     <style name="ArticleDetailsTitle" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="android:textColor">#ff000000</item>
-        <item name="fontFamily">@font/rubik_bold</item>
+        <item name="fontFamily">@font/rubik_medium</item>
         <item name="android:textAlignment">center</item>
     </style>
 
     <style name="ArticleDetailsContent" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="fontFamily">@font/merriweather</item>
+        <item name="fontFamily">@font/rubik</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textAlignment">center</item>
         <item name="android:textColor">#ff000000</item>
     </style>
 

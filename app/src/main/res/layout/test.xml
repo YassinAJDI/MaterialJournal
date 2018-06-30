@@ -18,23 +18,12 @@
                 android:id="@+id/image_publisher_icon"
                 style="@style/ArticleDetailsPublisherImage"
                 android:layout_marginStart="@dimen/horizontal_padding_mobile"
-                android:layout_marginLeft="@dimen/horizontal_padding_mobile"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_article_title"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/avatars" />
-
-            <TextView
-                android:id="@+id/by_tag"
-                style="@style/ArticleDetailsBy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/image_publisher_icon"
-                app:layout_constraintStart_toEndOf="@+id/image_publisher_icon"
-                app:layout_constraintTop_toTopOf="@+id/image_publisher_icon"
-                tools:text="By" />
 
             <TextView
                 android:id="@+id/text_publisher_name"
@@ -42,10 +31,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/image_publisher_icon"
-                app:layout_constraintStart_toEndOf="@+id/by_tag"
-                app:layout_constraintTop_toTopOf="@+id/image_publisher_icon"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/image_publisher_icon"
+                app:layout_constraintStart_toStartOf="@+id/image_publisher_icon"
+                app:layout_constraintTop_toBottomOf="@+id/image_publisher_icon"
                 tools:text="@tools:sample/full_names" />
 
             <!--<LinearLayout-->
@@ -82,20 +71,20 @@
                 android:id="@+id/text_article_title"
                 style="@style/ArticleDetailsTitle"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="123dp"
                 android:layout_marginStart="@dimen/horizontal_padding_mobile"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="@dimen/horizontal_padding_mobile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_publisher_name"
                 tools:text="Poverty To Empowerment in Chicago." />
 
             <ImageView
                 android:id="@+id/image_article_image"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintDimensionRatio="16:9"
                 app:layout_constraintEnd_toEndOf="parent"
