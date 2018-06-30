@@ -1,20 +1,25 @@
 package com.ajdi.yassin.instajournal.ui.notedetail;
 
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteActivity;
 import com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteFragment;
 import com.ajdi.yassin.instajournal.utils.ActivityUtils;
+import com.ajdi.yassin.instajournal.utils.UiUtils;
 import com.ajdi.yassin.instajournal.utils.ViewModelFactory;
+import com.google.android.material.bottomappbar.BottomAppBar;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import static com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteActivity.ADD_EDIT_RESULT_OK;
 import static com.ajdi.yassin.instajournal.ui.notedetail.NoteDetailFragment.REQUEST_EDIT_NOTE;
@@ -27,6 +32,8 @@ public class NoteDetailActivity extends AppCompatActivity implements NoteDetailN
 
     private NoteDetailViewModel mViewModel;
 
+    private BottomAppBar mBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +42,8 @@ public class NoteDetailActivity extends AppCompatActivity implements NoteDetailN
         setupToolbar();
 
         setupViewFragment();
+
+        setupBottomBar();
 
         mViewModel = obtainViewModel(this);
 
@@ -51,6 +60,35 @@ public class NoteDetailActivity extends AppCompatActivity implements NoteDetailN
 //                TaskDetailActivity.this.onTaskDeleted();
 //            }
 //        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.bottom_bar_details, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.action_share);
+
+        if (menuItem != null) {
+            UiUtils.tintMenuIcon(this, menuItem, R.color.md_white_1000);
+        }
+
+        menuItem = menu.findItem(R.id.action_star);
+
+        if (menuItem != null) {
+            UiUtils.tintMenuIcon(this, menuItem, R.color.md_white_1000);
+        }
+
+        menuItem = menu.findItem(R.id.action_trash);
+
+        if (menuItem != null) {
+            UiUtils.tintMenuIcon(this, menuItem, R.color.md_white_1000);
+        }
+        return true;
+    }
+
+    private void setupBottomBar() {
+        mBar = findViewById(R.id.bottom_app_bar);
+        setSupportActionBar(mBar);
     }
 
     private void setupViewFragment() {

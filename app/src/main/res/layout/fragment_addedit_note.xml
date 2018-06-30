@@ -46,7 +46,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="text"
                         android:maxLines="1"
-                        android:hint="Compose your note:<"
+                        android:hint="Compose your note:"
                         android:text="@={viewmodel.title}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
