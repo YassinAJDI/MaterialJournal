@@ -27,7 +27,7 @@
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:onClick="@{() -> listener.onNoteClicked(note)}"
-        app:cardCornerRadius="4dp">
+        app:cardCornerRadius="2dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
