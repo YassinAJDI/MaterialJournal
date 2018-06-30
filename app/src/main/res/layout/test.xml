@@ -19,18 +19,17 @@
                 style="@style/ArticleDetailsPublisherImage"
                 android:layout_marginStart="@dimen/horizontal_padding_mobile"
                 android:layout_marginLeft="@dimen/horizontal_padding_mobile"
-                android:layout_marginTop="@dimen/horizontal_padding_mobile"
-                android:layout_marginBottom="@dimen/horizontal_padding_mobile"
+                android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_article_title"
                 tools:src="@tools:sample/avatars" />
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginEnd="@dimen/horizontal_padding_mobile"
                 android:layout_marginRight="@dimen/horizontal_padding_mobile"
                 android:layout_weight="100"
@@ -61,37 +60,36 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/horizontal_padding_mobile"
-                android:layout_marginTop="@dimen/horizontal_padding_mobile"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="@dimen/horizontal_padding_mobile"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_publisher_icon"
+                app:layout_constraintTop_toBottomOf="@+id/image_article_image"
                 tools:text="Poverty To Empowerment in Chicago." />
 
             <ImageView
                 android:id="@+id/image_article_image"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="@dimen/horizontal_padding_mobile"
                 android:scaleType="centerCrop"
                 app:layout_constraintDimensionRatio="16:9"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_article_title"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
             <TextView
                 android:id="@+id/text_content"
-                style="@style/TextAppearance.MaterialComponents.Body1"
+                style="@style/ArticleDetailsContent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="126dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
-                android:fontFamily="@font/merriweather"
+                android:layout_marginBottom="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_article_image"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
                 tools:text="The villain of this piece is an orphan, while the hero is someone who fights to save the person beside them. The plot begins with opposites attracting in a shadowy forest. The ending includes elements of the moon and shiny gadgets." />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
