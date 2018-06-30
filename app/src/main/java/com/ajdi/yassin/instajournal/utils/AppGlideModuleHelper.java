@@ -1,12 +1,14 @@
 package com.ajdi.yassin.instajournal.utils;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
 
+import com.ajdi.yassin.instajournal.R;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;
 import com.bumptech.glide.request.RequestOptions;
+
+import androidx.annotation.NonNull;
 
 /**
  * Ensures that Glide's generated API is created for this app.
@@ -25,7 +27,7 @@ public class AppGlideModuleHelper extends AppGlideModule {
     public void applyOptions(@NonNull Context context, @NonNull GlideBuilder builder) {
         builder.setDefaultRequestOptions(
                 new RequestOptions()
-                        .placeholder(android.R.color.darker_gray)
+                        .placeholder(R.color.md_grey_200)
         );
     }
 }
