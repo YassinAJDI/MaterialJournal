@@ -44,6 +44,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@color/md_grey_200" />
 
+            <TextView
+                android:id="@+id/text_title"
+                style="@style/CardArticleItemText.Headline"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/image_note"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="This is a pretty long title, testing for some bugs " />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>

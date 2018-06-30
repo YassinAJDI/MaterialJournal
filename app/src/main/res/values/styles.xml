@@ -54,7 +54,7 @@
         <item name="android:paddingLeft">@dimen/card_inner_padding</item>
         <item name="android:paddingRight">@dimen/card_inner_padding</item>
         <item name="android:paddingTop">@dimen/card_inner_padding</item>
-        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingBottom">8dp</item>
         <item name="android:maxLines">3</item>
         <item name="android:lineSpacingExtra">2dp</item>
         <item name="fontWeight">500</item>
