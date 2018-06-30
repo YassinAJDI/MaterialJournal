@@ -65,6 +65,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_note" />
 
+            <ImageView
+                android:id="@+id/card_action_star_button"
+                style="@style/CardArticleActionIcon"
+                android:layout_width="48dp"
+                android:src="@drawable/twotone_star_black_48"
+                app:layout_constraintBottom_toBottomOf="@+id/card_action_share_button"
+                app:layout_constraintEnd_toStartOf="@+id/card_action_share_button"
+                app:layout_constraintTop_toTopOf="@+id/card_action_share_button" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>
