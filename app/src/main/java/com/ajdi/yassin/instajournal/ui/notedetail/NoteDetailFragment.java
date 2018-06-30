@@ -73,10 +73,14 @@ public class NoteDetailFragment extends Fragment {
                 .apply(new RequestOptions().circleCrop())
                 .into(mBinding.imagePublisherIcon);
 
+        mBinding.textPublisherName.setText("Yassin AJDI");
+
         // show note image
         GlideApp.with(this)
                 .load("https://static-cdn.123rf.com/images/v5/index-thumbnail/84170952-b.jpg")
                 .into(mBinding.imageArticleImage);
+
+
     }
 
     @Override
