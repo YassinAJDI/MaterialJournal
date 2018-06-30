@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.databinding.ItemNoteBinding;
 import com.ajdi.yassin.instajournal.utils.GlideApp;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
@@ -57,6 +59,12 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         noteViewHolder.binding.setListener(userActionsListener);
         noteViewHolder.binding.setNote(note);
+
+        GlideApp.with(mContext)
+                .load("https://static-cdn.123rf.com/images/v5/index-thumbnail/84170952-b.jpg")
+                .apply(new RequestOptions().transforms(new CenterCrop(), new RoundedCorners(16)))
+                .into(noteViewHolder.binding.imageNote);
+
         GlideApp.with(mContext)
                 .load("https://lh3.googleusercontent.com/-xT9nbe3isBs/WxNLkWcpSHI/AAAAAAAAAic/pulWUZTPWooItSTuxghGgjt9dhV2kzf9gCEwYBhgL/w140-h140-p/4711f20662911d1ff51216d692c1354025357acf_hq.jpg")
                 .apply(new RequestOptions().circleCrop())
