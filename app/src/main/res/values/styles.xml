@@ -20,4 +20,65 @@
         <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
+    <!-- Commune -->
+    <style name="MetaDataText">
+        <item name="android:textAppearance">@android:style/TextAppearance.Small</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">12sp</item>
+        <item name="fontWeight">400</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="SourceIcon">
+        <item name="android:layout_width">@dimen/card_publisher_icon_size</item>
+        <item name="android:layout_height">@dimen/card_publisher_icon_size</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="MetaDataText.SourceName">
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/card_publisher_text</item>
+    </style>
+
+    <style name="MetaDataText.PublishTime">
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/card_time_text</item>
+    </style>
+
+    <!--Card Styles -->
+    <style name="CardArticleItemText" parent="MetaDataText" />
+
+    <style name="CardArticleItemText.Headline">
+        <item name="android:textAppearance">@android:style/TextAppearance</item>
+        <item name="android:paddingLeft">@dimen/card_inner_padding</item>
+        <item name="android:paddingRight">@dimen/card_inner_padding</item>
+        <item name="android:paddingTop">@dimen/card_inner_padding</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="fontWeight">500</item>
+        <item name="android:textColor">@color/card_title_text</item>
+        <item name="android:textSize">@dimen/card_title_text_size</item>
+    </style>
+
+    <style name="CardArticleSourceIcon" parent="SourceIcon" />
+
+    <style name="CardArticleItemText.SourceName" parent="MetaDataText.SourceName" />
+
+    <style name="CardArticleItemText.Time" parent="MetaDataText.PublishTime" />
+
+
+    <style name="CardArticleActionIcon">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_width">@dimen/min_touch_size</item>
+        <item name="android:layout_height">@dimen/min_touch_size</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+
 </resources>
