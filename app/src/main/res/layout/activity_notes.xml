@@ -33,14 +33,14 @@
             app:backgroundTint="@color/colorPrimary"
             app:fabAlignmentMode="center"
             app:fabAttached="true"
-            app:navigationIcon="@drawable/ic_done_black_24dp"/>
+            app:navigationIcon="@drawable/ic_menu_black_24dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_add_note"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_black_24dp"
-            app:layout_anchor="@id/bottom_app_bar" />
+            app:layout_anchor="@id/bottom_app_bar"
+            app:srcCompat="@drawable/ic_add_black_24dp" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
