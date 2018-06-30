@@ -15,4 +15,7 @@
     <dimen name="card_inner_padding">@dimen/horizontal_padding_mobile</dimen>
     <dimen name="card_title_text_size">16sp</dimen>
     <dimen name="card_publisher_icon_size">26dp</dimen>
+
+    <!--Article details -->
+    <dimen name="article_publisher_icon_size">30dp</dimen>
 </resources>

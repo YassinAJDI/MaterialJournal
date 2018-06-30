@@ -80,5 +80,27 @@
         <item name="android:focusable">true</item>
     </style>
 
+    <!--Article Details Styles -->
+    <style name="ArticleDetailsPublisherImage" parent="SourceIcon">
+        <item name="android:layout_width">@dimen/article_publisher_icon_size</item>
+        <item name="android:layout_height">@dimen/article_publisher_icon_size</item>
+    </style>
+
+    <style name="ArticleDetailsPublisherName" parent="MetaDataText.SourceName" />
+
+    <style name="ArticleDetailsTime" parent="MetaDataText.PublishTime" />
+
+    <style name="ArticleDetailsTitle">
+        <item name="fontWeight">500</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#ff000000</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+    </style>
+
+    <style name="ArticleDetailsContent">
+        <item name="fontWeight">500</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ff000000</item>
+    </style>
 
 </resources>
