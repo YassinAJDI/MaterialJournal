@@ -19,7 +19,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
@@ -50,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
+                android:text="@{note.title}"
                 app:layout_constraintEnd_toStartOf="@+id/image_note"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -90,6 +91,7 @@
                     style="@style/CardArticleItemText.Time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{note.date}"
                     tools:text="10 mins ago" />
             </LinearLayout>
 
@@ -100,6 +102,7 @@
                 android:layout_marginEnd="1dp"
                 android:layout_marginRight="1dp"
                 android:src="@drawable/twotone_share_black_48"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_note" />
 
