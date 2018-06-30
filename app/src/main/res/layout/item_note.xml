@@ -56,6 +56,16 @@
                 tools:text="This is a pretty long title, testing for some bugs " />
 
             <ImageView
+                android:id="@+id/image_user_icon"
+                style="@style/CardArticleSourceIcon"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/card_action_share_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/card_action_share_button"
+                tools:src="@color/md_grey_200" />
+
+            <ImageView
                 android:id="@+id/card_action_share_button"
                 style="@style/CardArticleActionIcon"
                 android:layout_marginTop="8dp"
