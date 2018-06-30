@@ -65,6 +65,34 @@
                 app:layout_constraintTop_toTopOf="@+id/card_action_share_button"
                 tools:src="@color/md_grey_200" />
 
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="100"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/card_action_share_button"
+                app:layout_constraintEnd_toStartOf="@+id/card_action_edit_button"
+                app:layout_constraintStart_toEndOf="@+id/image_user_icon"
+                app:layout_constraintTop_toTopOf="@+id/card_action_share_button">
+
+                <TextView
+                    android:id="@+id/text_publisher_name"
+                    style="@style/CardArticleItemText.SourceName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Yassin AJDI" />
+
+                <TextView
+                    android:id="@+id/text_time"
+                    style="@style/CardArticleItemText.Time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="10 mins ago" />
+            </LinearLayout>
+
             <ImageView
                 android:id="@+id/card_action_share_button"
                 style="@style/CardArticleActionIcon"
