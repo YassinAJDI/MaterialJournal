@@ -51,8 +51,6 @@ public class NotesFragment extends Fragment {
         mFragmentNotesBinding.setViewmodel(mNotesViewModel);
         //mFragmentNotesBinding.setLifecycleOwner(this);
 
-        setHasOptionsMenu(true);
-
         return mFragmentNotesBinding.getRoot();
     }
 

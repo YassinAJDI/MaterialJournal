@@ -2,11 +2,14 @@ package com.ajdi.yassin.instajournal.ui.notes;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteActivity;
 import com.ajdi.yassin.instajournal.ui.notedetail.NoteDetailActivity;
 import com.ajdi.yassin.instajournal.utils.ActivityUtils;
+import com.ajdi.yassin.instajournal.utils.UiUtils;
 import com.ajdi.yassin.instajournal.utils.ViewModelFactory;
 
 import androidx.annotation.Nullable;
@@ -75,6 +78,19 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
         ViewModelFactory factory = ViewModelFactory.getInstance(activity.getApplication());
 
         return ViewModelProviders.of(activity, factory).get(NotesViewModel.class);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+
+        if (menuItem != null) {
+            UiUtils.tintMenuIcon(this, menuItem, R.color.md_white_1000);
+        }
+
+        return true;
     }
 
     @Override
