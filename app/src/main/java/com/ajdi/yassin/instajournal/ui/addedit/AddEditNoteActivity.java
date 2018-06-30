@@ -1,13 +1,13 @@
 package com.ajdi.yassin.instajournal.ui.addedit;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.utils.ActivityUtils;
@@ -36,7 +36,7 @@ public class AddEditNoteActivity extends AppCompatActivity implements AddEditNot
         mViewModel = obtainViewModel(this);
 
         // The activity observes the navigation events in the ViewModel
-        mViewModel.getNoteUpdatedEvent().observe(this, new Observer<Void>() {
+        mViewModel.getNoteUpdatedEvent().observeEvent(this, new Observer<Void>() {
             @Override
             public void onChanged(@Nullable Void aVoid) {
                 AddEditNoteActivity.this.onNoteSaved();

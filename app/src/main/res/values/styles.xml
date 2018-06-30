@@ -11,7 +11,7 @@
 
     <style name="Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Widget.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlineBox">
+    <style name="Widget.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="hintTextAppearance">@style/TextAppearance.TextInputLayout.HintText</item>
         <item name="android:paddingBottom">8dp</item>
     </style>

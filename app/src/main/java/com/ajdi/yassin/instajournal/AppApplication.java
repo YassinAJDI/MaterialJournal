@@ -1,6 +1,6 @@
 package com.ajdi.yassin.instajournal;
 
-import android.support.multidex.MultiDexApplication;
+import androidx.multidex.MultiDexApplication;
 
 import timber.log.Timber;
 

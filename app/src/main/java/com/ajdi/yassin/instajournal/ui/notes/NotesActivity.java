@@ -1,20 +1,21 @@
 package com.ajdi.yassin.instajournal.ui.notes;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteActivity;
 import com.ajdi.yassin.instajournal.ui.notedetail.NoteDetailActivity;
 import com.ajdi.yassin.instajournal.utils.ActivityUtils;
 import com.ajdi.yassin.instajournal.utils.ViewModelFactory;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 public class NotesActivity extends AppCompatActivity implements NotesNavigator, NoteItemNavigator {
 
@@ -32,7 +33,7 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
         mViewModel = obtainViewModel(this);
 
         // Subscribe to add new note event
-        mViewModel.getNewNoteEvent().observe(this, new Observer<Void>() {
+        mViewModel.getNewNoteEvent().observeEvent(this, new Observer<Void>() {
             @Override
             public void onChanged(@Nullable Void aVoid) {
                 addNewNote();
@@ -40,7 +41,7 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
         });
 
         // Subscribe to open note event
-        mViewModel.getOpenNoteEvent().observe(this, new Observer<String>() {
+        mViewModel.getOpenNoteEvent().observeEvent(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String noteId) {
                 if (noteId != null) {

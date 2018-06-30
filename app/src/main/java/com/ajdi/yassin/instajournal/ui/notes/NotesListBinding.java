@@ -1,11 +1,11 @@
 package com.ajdi.yassin.instajournal.ui.notes;
 
-import android.databinding.BindingAdapter;
-import android.support.v7.widget.RecyclerView;
-
 import com.ajdi.yassin.instajournal.data.model.Note;
 
 import java.util.List;
+
+import androidx.databinding.BindingAdapter;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Contains {@link BindingAdapter}s for the {@link Note} list.

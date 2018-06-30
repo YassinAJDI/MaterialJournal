@@ -1,8 +1,8 @@
 package com.ajdi.yassin.instajournal.utils;
 
 import android.app.Application;
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.ajdi.yassin.instajournal.data.source.NotesRepository;
 import com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteViewModel;

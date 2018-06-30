@@ -1,6 +1,6 @@
 package com.ajdi.yassin.instajournal.data.source.local;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.data.source.NotesDataSource;

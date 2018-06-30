@@ -12,7 +12,7 @@
             type="com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteViewModel" />
     </data>
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,20 +32,20 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:visibility="@{viewmodel.dataLoading ? View.GONE : View.VISIBLE}">
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/edit_add_note_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Widget.TextInputLayout"
                     android:hint="This is a hint">
 
-                    <android.support.design.widget.TextInputEditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@={viewmodel.title}"
                         android:inputType="text"
                         android:maxLines="1" />
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
                     android:id="@+id/button_pick"
@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:text="Pick an image" />
 
-                <android.support.design.button.MaterialButton
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/cancel_button"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="wrap_content"
@@ -79,5 +79,5 @@
 
             </LinearLayout>
         </ScrollView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

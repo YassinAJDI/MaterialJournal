@@ -16,7 +16,7 @@
             type="com.ajdi.yassin.instajournal.ui.notes.NoteItemUserActionsListener" />
     </data>
 
-    <android.support.design.card.MaterialCardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -50,5 +50,5 @@
                 android:text="this is content"
                 android:textAppearance="?attr/textAppearanceBody2" />
         </LinearLayout>
-    </android.support.design.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

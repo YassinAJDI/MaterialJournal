@@ -1,7 +1,7 @@
 package com.ajdi.yassin.instajournal.utils;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.ajdi.yassin.instajournal.data.source.NotesRepository;
 import com.ajdi.yassin.instajournal.data.source.local.AppDatabase;
