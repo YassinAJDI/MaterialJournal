@@ -1,14 +1,14 @@
 package com.ajdi.yassin.instajournal.data.source.local;
 
+import com.ajdi.yassin.instajournal.data.model.Note;
+
+import java.util.List;
+
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
-
-import com.ajdi.yassin.instajournal.data.model.Note;
-
-import java.util.List;
 
 /**
  * Data Access Object for notes table.
@@ -21,7 +21,7 @@ public interface NotesDao {
      *
      * @return all notes.
      */
-    @Query("SELECT * FROM note")
+    @Query("SELECT * FROM note ORDER BY date DESC")
     List<Note> getNotes();
 
     /**
