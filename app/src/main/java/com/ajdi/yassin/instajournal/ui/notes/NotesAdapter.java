@@ -71,7 +71,8 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 .into(noteViewHolder.binding.imageUserIcon);
 
         String timeAgo = (String) TimeUtils.getTimeAgo(note.getDate(), mContext);
-        Timber.d(timeAgo);
+       noteViewHolder.binding.textPublisherName.setText("Yassin AJDI");
+
         noteViewHolder.binding.textTime.setText(timeAgo);
 
         noteViewHolder.binding.executePendingBindings();
