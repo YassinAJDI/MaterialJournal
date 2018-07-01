@@ -2,7 +2,6 @@ package com.ajdi.yassin.instajournal.ui.addedit;
 
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.databinding.FragmentAddeditNoteBinding;
-import com.ajdi.yassin.instajournal.utils.GlideApp;
 import com.ajdi.yassin.instajournal.utils.SnackbarMessage;
 import com.ajdi.yassin.instajournal.utils.SnackbarUtils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -88,19 +86,14 @@ public class AddEditNoteFragment extends Fragment {
         Timber.d("onActivityResult");
         if (requestCode == PICK_PHOTO_CODE && resultCode == RESULT_OK && data != null) {
 
-            Uri photoUri = data.getData();
-            Timber.d("Selectted image Uri: " + photoUri.toString());
-            // Do something with the photo based on Uri
-            //String path = ImageUtils.getPathFromURI(getContext(), photoUri);
-            //Timber.d("Selectted image Path: " + path);
-            //File f = new File(path);
-            //Uri uri = Uri.fromFile(f);
-            // Load the selected image into a preview
-            //ImageView ivPreview = (ImageView) findViewById(R.id.ivPreview);
-            //ivPreview.setImageBitmap(selectedImage);
-            GlideApp.with(this)
-                    .load(photoUri)
-                    .into(mNotebinding.imageNote);
+//            Uri photoUri = data.getData();
+//            Timber.d("Selectted image Uri: " + photoUri.toString());
+//            String uriToString = ImageUtils.getPathFromURI(getActivity(), photoUri);
+//            mViewModel.image.set(uriToString);
+//            Timber.d("Selectted image String Uri: " + uriToString);
+//            GlideApp.with(this)
+//                    .load(uriToString)
+//                    .into(mNotebinding.imageNote);
         }
     }
 
@@ -108,7 +101,6 @@ public class AddEditNoteFragment extends Fragment {
         // Create intent for picking a photo from the gallery
         Intent intent = new Intent(Intent.ACTION_PICK,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("image/*");
 
         if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
             // Bring up gallery to select a photo
@@ -120,6 +112,9 @@ public class AddEditNoteFragment extends Fragment {
         // Add or edit an existing note?
         if (getArguments() != null) {
             mViewModel.start(getArguments().getString(ARGUMENT_EDIT_NOTE_ID));
+//            GlideApp.with(this)
+//                    .load(mViewModel.image)
+//                    .into(mNotebinding.imageNote);
         } else {
             mViewModel.start(null);
         }

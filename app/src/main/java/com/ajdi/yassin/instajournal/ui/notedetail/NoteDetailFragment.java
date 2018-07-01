@@ -14,6 +14,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import timber.log.Timber;
 
 public class NoteDetailFragment extends Fragment {
 
@@ -62,7 +64,12 @@ public class NoteDetailFragment extends Fragment {
 
         setupSnackbar();
 
-        loadData();
+        mNoteDetailViewModel.getNoteLoadedCommand().observeEvent(this, new Observer<Void>() {
+            @Override
+            public void onChanged(Void aVoid) {
+                loadData();
+            }
+        });
     }
 
     private void loadData() {
@@ -76,8 +83,10 @@ public class NoteDetailFragment extends Fragment {
         mBinding.textPublisherName.setText("Yassin AJDI");
 
         // show note image
+        String image = mNoteDetailViewModel.note.get().getImage();
+        Timber.d("image url:" + image);
         GlideApp.with(this)
-                .load("https://static-cdn.123rf.com/images/v5/index-thumbnail/84170952-b.jpg")
+                .load(image)
                 .into(mBinding.imageArticleImage);
 
 

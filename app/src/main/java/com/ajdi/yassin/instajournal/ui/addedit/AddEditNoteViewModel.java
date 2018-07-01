@@ -1,11 +1,6 @@
 package com.ajdi.yassin.instajournal.ui.addedit;
 
 import android.app.Application;
-import androidx.lifecycle.AndroidViewModel;
-import androidx.databinding.ObservableBoolean;
-import androidx.databinding.ObservableField;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.data.model.Note;
@@ -16,6 +11,12 @@ import com.ajdi.yassin.instajournal.utils.SnackbarMessage;
 
 import java.util.Date;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.ObservableBoolean;
+import androidx.databinding.ObservableField;
+import androidx.lifecycle.AndroidViewModel;
+
 /**
  * ViewModel for the Add/Edit screen.
  */
@@ -24,6 +25,10 @@ public class AddEditNoteViewModel extends AndroidViewModel implements NotesDataS
     public final ObservableField<String> title = new ObservableField<>();
 
     public final ObservableField<String> content = new ObservableField<>();
+
+    public final ObservableField<String> image = new ObservableField<>();
+
+    public final ObservableField<Long> date = new ObservableField<>();
 
     public final ObservableBoolean dataLoading = new ObservableBoolean(false);
 
@@ -70,6 +75,7 @@ public class AddEditNoteViewModel extends AndroidViewModel implements NotesDataS
     public void onNoteLoaded(Note note) {
         title.set(note.getTitle());
         content.set(note.getContent());
+        image.set(note.getImage());
         dataLoading.set(false);
         mIsDataLoaded = true;
     }
@@ -81,7 +87,7 @@ public class AddEditNoteViewModel extends AndroidViewModel implements NotesDataS
 
     // Called when clicking on fab.
     void saveNote() {
-        Note note = new Note(title.get(), content.get(), new Date().getTime());
+        Note note = new Note(title.get(), content.get(), new Date().getTime(), image.get());
         if (note.isEmpty()) {
             mSnackbarText.setValue(R.string.empty_note_message);
             return;
@@ -90,7 +96,8 @@ public class AddEditNoteViewModel extends AndroidViewModel implements NotesDataS
         if (isNewNote() || mNoteId == null) {
             createNote(note);
         } else {
-            note = new Note(Integer.parseInt(mNoteId), title.get(), content.get(), new Date().getTime());
+            note = new Note(Integer.parseInt(mNoteId), title.get(), content.get(),
+                    date.get(), image.get());
             updateNote(note);
         }
     }

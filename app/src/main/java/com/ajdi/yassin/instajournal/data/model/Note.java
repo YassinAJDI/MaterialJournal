@@ -1,12 +1,12 @@
 package com.ajdi.yassin.instajournal.data.model;
 
+import com.google.common.base.Strings;
+
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-import androidx.annotation.NonNull;
-
-import com.google.common.base.Strings;
 
 @Entity(tableName = "note")
 public class Note {
@@ -25,21 +25,26 @@ public class Note {
     @ColumnInfo(name = "date")
     private long mDate;
 
+    @ColumnInfo(name = "image")
+    private String mImage;
+
     /**
      * This constructor is used by Room.
      */
-    public Note(int id, String title, String content, long date) {
+    public Note(int id, String title, String content, long date, String image) {
         this.mId = id;
         this.mTitle = title;
         this.mContent = content;
         this.mDate = date;
+        this.mImage = image;
     }
 
     @Ignore
-    public Note(String title, String content, long date) {
+    public Note(String title, String content, long date, String image) {
         this.mTitle = title;
         this.mContent = content;
         this.mDate = date;
+        this.mImage = image;
     }
 
     public int getId() {
@@ -64,6 +69,14 @@ public class Note {
 
     public void setContent(String content) {
         this.mContent = content;
+    }
+
+    public String getImage() {
+        return mImage;
+    }
+
+    public void setImage(String mImage) {
+        this.mImage = mImage;
     }
 
     public String toString() {
