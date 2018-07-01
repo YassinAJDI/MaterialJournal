@@ -10,11 +10,11 @@
 
         <variable
             name="note"
-            type="com.ajdi.yassin.instajournal.data.model.Note" />
+            type="com.ajdi.yassin.materialJournal.data.model.Note" />
 
         <variable
             name="listener"
-            type="com.ajdi.yassin.instajournal.ui.notes.NoteItemUserActionsListener" />
+            type="com.ajdi.yassin.materialJournal.ui.notes.NoteItemUserActionsListener" />
     </data>
 
     <androidx.cardview.widget.CardView

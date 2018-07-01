@@ -27,3 +27,6 @@
   **[] $VALUES;
   public *;
 }
+
+-keepattributes Signature
+-keepattributes *Annotation*

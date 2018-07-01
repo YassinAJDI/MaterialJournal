@@ -10,7 +10,7 @@
 
         <variable
             name="viewmodel"
-            type="com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteViewModel" />
+            type="com.ajdi.yassin.materialJournal.ui.addedit.AddEditNoteViewModel" />
     </data>
 
 

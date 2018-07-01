@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "927703722243",
-    "firebase_url": "https://instajournal-22c8f.firebaseio.com",
-    "project_id": "instajournal-22c8f",
-    "storage_bucket": "instajournal-22c8f.appspot.com"
+    "project_number": "63911645628",
+    "firebase_url": "https://materialjournal-eab49.firebaseio.com",
+    "project_id": "materialjournal-eab49",
+    "storage_bucket": "materialjournal-eab49.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:927703722243:android:e86142a270a6868f",
+        "mobilesdk_app_id": "1:63911645628:android:c9d284aecde456f4",
         "android_client_info": {
-          "package_name": "com.ajdi.yassin.instajournal"
+          "package_name": "com.ajdi.yassin.materialJournal"
         }
       },
       "oauth_client": [
         {
-          "client_id": "927703722243-ilbj09uftvmi5q8ejml4om8751h2i54u.apps.googleusercontent.com",
+          "client_id": "63911645628-qlu8epmf17sr42brmjk8ho8mep89331i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ajdi.yassin.materialJournal",
+            "certificate_hash": "4d8998a34d240f17bf0ec7cd8fc4611102ba6914"
+          }
+        },
+        {
+          "client_id": "63911645628-sentojtb123d6pifsi7dho35tu8kdjcg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD4MW7nWMi_6PxDoClgjL2cPKDUxHin4gs"
+          "current_key": "AIzaSyBWnV9Lz3fYidITa8E86ldes38EqkuA2cw"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "63911645628-sentojtb123d6pifsi7dho35tu8kdjcg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

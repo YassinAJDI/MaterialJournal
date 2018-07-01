@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">InstaJournal</string>
+    <string name="app_name">MaterialJournal</string>
 
     <string name="title_hint">Note title</string>
     <string name="content_hint">Compose your note here.</string>

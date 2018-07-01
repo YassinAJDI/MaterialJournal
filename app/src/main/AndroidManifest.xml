@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ajdi.yassin.instajournal">
+    package="com.ajdi.yassin.materialJournal">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".AppApplication"
+        android:name="com.ajdi.yassin.materialJournal.AppApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,22 +17,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ui.notes.NotesActivity">
+        <activity android:name="com.ajdi.yassin.materialJournal.MainActivity" />
+        <activity android:name="com.ajdi.yassin.materialJournal.ui.notes.NotesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.notedetail.NoteDetailActivity" />
-        <activity android:name=".ui.addedit.AddEditNoteActivity" />
+        <activity android:name="com.ajdi.yassin.materialJournal.ui.notedetail.NoteDetailActivity" />
+        <activity android:name="com.ajdi.yassin.materialJournal.ui.addedit.AddEditNoteActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".ui.login.AuthUiActivity"></activity>
+        <activity android:name="com.ajdi.yassin.materialJournal.ui.login.AuthUiActivity"></activity>
     </application>
 
 </manifest>
