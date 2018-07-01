@@ -1,5 +1,6 @@
 package com.ajdi.yassin.instajournal.ui.notes;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,12 +9,17 @@ import android.view.View;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.ui.addedit.AddEditNoteActivity;
+import com.ajdi.yassin.instajournal.ui.login.AuthUiActivity;
 import com.ajdi.yassin.instajournal.ui.notedetail.NoteDetailActivity;
 import com.ajdi.yassin.instajournal.utils.ActivityUtils;
 import com.ajdi.yassin.instajournal.utils.UiUtils;
 import com.ajdi.yassin.instajournal.utils.ViewModelFactory;
+import com.firebase.ui.auth.IdpResponse;
+import com.firebase.ui.auth.util.ExtraConstants;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,10 +36,16 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
 
     private BottomSheetBehavior<View> bottomDrawerBehavior;
 
+    private FirebaseAuth mFirebaseAuth;
+
+    private FirebaseUser mFirebaseUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
+
+        checkIfSignedIn();
 
         setupViewFragment();
 
@@ -60,6 +72,19 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
                 }
             }
         });
+    }
+
+    private void checkIfSignedIn() {
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+
+        if (mFirebaseUser == null){
+            //Not signed in, launch the Sign In Activity
+            startActivity(new Intent(this, AuthUiActivity.class));
+            finish();
+            return;
+        }
+
     }
 
     private void setUpBottomDrawer() {
@@ -141,6 +166,10 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
             return;
         }
         super.onBackPressed();
+    }
 
+    public static Intent createIntent(Context context, IdpResponse idpResponse) {
+        return new Intent().setClass(context, NotesActivity.class)
+                .putExtra(ExtraConstants.IDP_RESPONSE, idpResponse);
     }
 }

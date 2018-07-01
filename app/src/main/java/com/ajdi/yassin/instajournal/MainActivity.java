@@ -1,10 +1,7 @@
 package com.ajdi.yassin.instajournal;
 
 import android.content.Intent;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -16,6 +13,8 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
 
     private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser mFirebaseUser;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private String mUsername;
 
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize Firebase components
         mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -56,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivityForResult(
                             AuthUI.getInstance()
                                     .createSignInIntentBuilder()
-                                    .setIsSmartLockEnabled(!BuildConfig.DEBUG /* credentials */, true /* hints */)
                                     .setAvailableProviders(providers)
                                     .build(),
                             RC_SIGN_IN);
