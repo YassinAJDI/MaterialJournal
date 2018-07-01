@@ -72,12 +72,6 @@ public class NoteDetailActivity extends AppCompatActivity implements NoteDetailN
             UiUtils.tintMenuIcon(this, menuItem, R.color.md_white_1000);
         }
 
-        menuItem = menu.findItem(R.id.action_star);
-
-        if (menuItem != null) {
-            UiUtils.tintMenuIcon(this, menuItem, R.color.md_white_1000);
-        }
-
         menuItem = menu.findItem(R.id.action_trash);
 
         if (menuItem != null) {

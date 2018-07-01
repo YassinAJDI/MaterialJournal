@@ -89,6 +89,7 @@ public class NoteDetailViewModel extends AndroidViewModel implements NotesDataSo
 
     public void starNote() {
         mNotesRepository.starNote(note.get());
+        note.get().setStar(true);
         mNoteStaredCommand.call();
     }
 }

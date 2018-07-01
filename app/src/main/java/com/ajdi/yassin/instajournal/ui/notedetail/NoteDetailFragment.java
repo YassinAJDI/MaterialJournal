@@ -20,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import timber.log.Timber;
 
 public class NoteDetailFragment extends Fragment {
 
@@ -83,8 +84,10 @@ public class NoteDetailFragment extends Fragment {
     }
 
     private void recreateOptionsMenu() {
-        if (getActivity() != null)
+        if (getActivity() != null) {
+            Timber.d("recreateOptionsMenu");
             getActivity().invalidateOptionsMenu();
+        }
     }
 
     private void loadData() {
@@ -115,15 +118,15 @@ public class NoteDetailFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-//        MenuItem menuItem = menu.findItem(R.id.action_starred);
-//        if (menuItem != null && mNoteDetailViewModel.note.get() != null) {
-//            if (mNoteDetailViewModel.note.get().isStar())
-//                menuItem.setTitle("Delete from favorites").setIcon(R.drawable.ic_star_black_24dp);
-//            else
-//                menuItem.setTitle("Add to favorites").setIcon(R.drawable.ic_star_border_black_24dp);
-//
-//            UiUtils.tintMenuIcon(getActivity(), menuItem, R.color.md_white_1000);
-//        }
+        MenuItem menuItem = menu.findItem(R.id.action_star);
+        if (menuItem != null && mNoteDetailViewModel.note.get() != null) {
+            if (mNoteDetailViewModel.note.get().isStar())
+                menuItem.setTitle("Delete from favorites").setIcon(R.drawable.ic_star_black_24dp);
+            else
+                menuItem.setTitle("Add to favorites").setIcon(R.drawable.ic_star_border_black_24dp);
+
+            UiUtils.tintMenuIcon(getActivity(), menuItem, R.color.md_white_1000);
+        }
     }
 
     @Override
@@ -138,6 +141,7 @@ public class NoteDetailFragment extends Fragment {
             case R.id.action_star: {
 
                 if (!mNoteDetailViewModel.note.get().isStar()) {
+                    Timber.d("isStar: " + mNoteDetailViewModel.note.get().isStar());
                     mNoteDetailViewModel.starNote();
                 } else {
                     //mPresenter.unfavoriteFeed();
