@@ -25,26 +25,21 @@ public class Note {
     @ColumnInfo(name = "date")
     private long mDate;
 
-    @ColumnInfo(name = "image")
-    private String mImage;
-
     /**
      * This constructor is used by Room.
      */
-    public Note(int id, String title, String content, long date, String image) {
+    public Note(int id, String title, String content, long date) {
         this.mId = id;
         this.mTitle = title;
         this.mContent = content;
         this.mDate = date;
-        this.mImage = image;
     }
 
     @Ignore
-    public Note(String title, String content, long date, String image) {
+    public Note(String title, String content, long date) {
         this.mTitle = title;
         this.mContent = content;
         this.mDate = date;
-        this.mImage = image;
     }
 
     public int getId() {
@@ -71,19 +66,11 @@ public class Note {
         this.mContent = content;
     }
 
-    public String getImage() {
-        return mImage;
-    }
-
-    public void setImage(String mImage) {
-        this.mImage = mImage;
-    }
-
     public String toString() {
         return "{Note title=" + mTitle + " content=" + mContent + "}";
     }
 
     public boolean isEmpty() {
-        return Strings.isNullOrEmpty(mTitle) && Strings.isNullOrEmpty(mContent);
+        return Strings.isNullOrEmpty(mTitle) || Strings.isNullOrEmpty(mContent);
     }
 }
