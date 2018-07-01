@@ -3,12 +3,14 @@ package com.ajdi.yassin.instajournal.ui.notedetail;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.databinding.FragmentNoteDetailBinding;
 import com.ajdi.yassin.instajournal.utils.GlideApp;
+import com.ajdi.yassin.instajournal.utils.UiUtils;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -94,6 +96,33 @@ public class NoteDetailFragment extends Fragment {
     public void onResume() {
         super.onResume();
         mNoteDetailViewModel.start(getArguments().getString(ARGUMENT_NOTE_ID));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_share: {
+                String title = mNoteDetailViewModel.note.get().getTitle();
+                String text = mNoteDetailViewModel.note.get().getContent();
+                UiUtils.fireShareIntent(getActivity(), title, text);
+                return true;
+            }
+//            case R.id.action_favourite: {
+//                if (!mFeed.isFavorite()) {
+//                    mPresenter.favoriteFeed();
+//                } else {
+//                    mPresenter.unfavoriteFeed();
+//                }
+//                return true;
+//            }
+//            case R.id.action_copy_link: {
+//                mPresenter.copyLink();
+//                return true;
+//            }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        //return super.onOptionsItemSelected(item);
     }
 
     private void setupFab() {
