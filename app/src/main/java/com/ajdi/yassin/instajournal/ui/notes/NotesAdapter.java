@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.databinding.ItemNoteBinding;
+import com.ajdi.yassin.instajournal.utils.Constants;
 import com.ajdi.yassin.instajournal.utils.GlideApp;
 import com.ajdi.yassin.instajournal.utils.TimeUtils;
 import com.ajdi.yassin.instajournal.utils.UiUtils;
@@ -17,6 +19,7 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import timber.log.Timber;
 
@@ -77,18 +80,40 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         noteViewHolder.binding.textTime.setText(timeAgo);
 
-        // card share button
-//        DrawableCompat.setTintList(mContext.getResources().getDrawable(
-//                R.drawable.ic_share_black_24dp), null);
-//        feedViewHolder.cardBinding.cardActionShareButton.setImageResource(
-//                R.drawable.ic_share_black_24dp);
-//        feedViewHolder.cardBinding.cardActionShareButton.setImageAlpha(Constants.ALPHA_VALUE);
+        // card share
+        DrawableCompat.setTintList(mContext.getResources().getDrawable(
+                R.drawable.ic_share_black_24dp), null);
+        noteViewHolder.binding.cardActionShareButton.setImageResource(
+                R.drawable.ic_share_black_24dp);
+        noteViewHolder.binding.cardActionShareButton.setImageAlpha(Constants.ALPHA_VALUE);
         noteViewHolder.binding.cardActionShareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 UiUtils.fireShareIntent(mContext, note.getTitle(), note.getContent());
             }
         });
+
+        // card add to favorites button
+        DrawableCompat.setTintList(mContext.getResources().getDrawable(
+                R.drawable.ic_star_black_24dp), null);
+        DrawableCompat.setTintList(mContext.getResources().getDrawable(
+                R.drawable.ic_star_border_black_24dp), null);
+
+        noteViewHolder.binding.cardActionStarButton.setImageResource(
+                note.isStar() ? R.drawable.ic_star_black_24dp :
+                        R.drawable.ic_star_border_black_24dp);
+        noteViewHolder.binding.cardActionStarButton.setImageAlpha(Constants.ALPHA_VALUE);
+        noteViewHolder.binding.cardActionStarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!note.isStar()) {
+                    mNotesViewModel.starNote(note);
+                } else {
+                    mNotesViewModel.instarNote(note);
+                }
+            }
+        });
+
 
         noteViewHolder.binding.executePendingBindings();
     }

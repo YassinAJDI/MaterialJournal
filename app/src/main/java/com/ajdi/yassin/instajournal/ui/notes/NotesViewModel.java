@@ -1,12 +1,7 @@
 package com.ajdi.yassin.instajournal.ui.notes;
 
 import android.app.Application;
-import androidx.lifecycle.AndroidViewModel;
 import android.content.Context;
-import androidx.databinding.ObservableArrayList;
-import androidx.databinding.ObservableBoolean;
-import androidx.databinding.ObservableList;
-import androidx.annotation.NonNull;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.data.model.Note;
@@ -19,6 +14,11 @@ import com.ajdi.yassin.instajournal.utils.SnackbarMessage;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableBoolean;
+import androidx.databinding.ObservableList;
+import androidx.lifecycle.AndroidViewModel;
 import timber.log.Timber;
 
 /**
@@ -115,5 +115,15 @@ public class NotesViewModel extends AndroidViewModel {
                     break;
             }
         }
+    }
+
+    public void starNote(Note note) {
+        mNotesRepository.starNote(note);
+        loadNotes(false);
+    }
+
+    public void instarNote(Note note) {
+        mNotesRepository.unstarNote(note);
+        loadNotes(false);
     }
 }
