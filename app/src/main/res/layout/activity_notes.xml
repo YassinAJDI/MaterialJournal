@@ -23,39 +23,40 @@
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottom_app_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:backgroundTint="@color/colorPrimary"
-            app:fabAlignmentMode="center"
-            app:fabAttached="true"
-            app:navigationIcon="@drawable/ic_menu_black_24dp" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_add_note"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_anchor="@id/bottom_app_bar"
-            app:srcCompat="@drawable/ic_add_black_24dp" />
-
-        <FrameLayout
-            android:id="@+id/bottom_drawer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="16dp"
-            app:behavior_hideable="true"
-            app:layout_behavior="@string/bottom_sheet_behavior">
-
-            <com.google.android.material.navigation.NavigationView
-                android:id="@+id/navigation_view"
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottom_app_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:menu="@menu/bottom_nav_drawer"/>
-        </FrameLayout>
+                android:layout_gravity="bottom"
+                app:backgroundTint="@color/colorPrimary"
+                app:fabAlignmentMode="center"
+                app:fabAttached="true"
+                app:navigationIcon="@drawable/ic_menu_black_24dp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_add_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_anchor="@id/bottom_app_bar"
+                app:srcCompat="@drawable/ic_add_black_24dp" />
+
+            <FrameLayout
+                android:id="@+id/bottom_drawer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="16dp"
+                app:behavior_hideable="true"
+                app:layout_behavior="@string/bottom_sheet_behavior">
+
+                <com.google.android.material.navigation.NavigationView
+                    android:id="@+id/navigation_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:menu="@menu/bottom_nav_drawer" />
+            </FrameLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

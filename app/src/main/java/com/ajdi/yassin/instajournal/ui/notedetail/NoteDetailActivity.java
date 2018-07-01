@@ -43,7 +43,7 @@ public class NoteDetailActivity extends AppCompatActivity implements NoteDetailN
 
         setupViewFragment();
 
-        setupBottomBar();
+        //setupBottomBar();
 
         mViewModel = obtainViewModel(this);
 
@@ -109,6 +109,7 @@ public class NoteDetailActivity extends AppCompatActivity implements NoteDetailN
     private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
         ab.setDisplayShowHomeEnabled(true);
@@ -119,6 +120,12 @@ public class NoteDetailActivity extends AppCompatActivity implements NoteDetailN
         ViewModelFactory factory = ViewModelFactory.getInstance(activity.getApplication());
 
         return ViewModelProviders.of(activity, factory).get(NoteDetailViewModel.class);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override

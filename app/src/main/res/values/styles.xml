@@ -9,7 +9,7 @@
         <item name="colorControlActivated">@color/colorControlActivated</item>
     </style>
 
-    <style name="Toolbar" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <!-- Commune -->
     <style name="MetaDataText">
