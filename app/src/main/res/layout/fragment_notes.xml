@@ -23,7 +23,6 @@
             android:id="@+id/recycler_note_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
             android:clipToPadding="false"
             android:paddingBottom="4dp"
             app:items="@{viewmodel.items}"
