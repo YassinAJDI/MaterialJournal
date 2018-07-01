@@ -2,12 +2,14 @@ package com.ajdi.yassin.instajournal.ui.notes;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.databinding.ItemNoteBinding;
 import com.ajdi.yassin.instajournal.utils.GlideApp;
 import com.ajdi.yassin.instajournal.utils.TimeUtils;
+import com.ajdi.yassin.instajournal.utils.UiUtils;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
@@ -45,7 +47,7 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Note note = mNotes.get(position);
+        final Note note = mNotes.get(position);
         Timber.d(note.toString());
 
         NoteViewHolder noteViewHolder = (NoteViewHolder) holder;
@@ -71,9 +73,22 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 .into(noteViewHolder.binding.imageUserIcon);
 
         String timeAgo = (String) TimeUtils.getTimeAgo(note.getDate(), mContext);
-       noteViewHolder.binding.textPublisherName.setText("Yassin AJDI");
+        noteViewHolder.binding.textPublisherName.setText("Yassin AJDI");
 
         noteViewHolder.binding.textTime.setText(timeAgo);
+
+        // card share button
+//        DrawableCompat.setTintList(mContext.getResources().getDrawable(
+//                R.drawable.ic_share_black_24dp), null);
+//        feedViewHolder.cardBinding.cardActionShareButton.setImageResource(
+//                R.drawable.ic_share_black_24dp);
+//        feedViewHolder.cardBinding.cardActionShareButton.setImageAlpha(Constants.ALPHA_VALUE);
+        noteViewHolder.binding.cardActionShareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UiUtils.fireShareIntent(mContext, note.getTitle(), note.getContent());
+            }
+        });
 
         noteViewHolder.binding.executePendingBindings();
     }

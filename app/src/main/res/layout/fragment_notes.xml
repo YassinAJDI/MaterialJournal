@@ -16,15 +16,16 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:refreshing="@{viewmodel.dataLoading}">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:background="@color/colorPrimaryDark"
             android:id="@+id/recycler_note_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="4dp"
+            android:background="@color/colorPrimaryDark"
             android:clipToPadding="false"
+            android:paddingBottom="4dp"
             app:items="@{viewmodel.items}"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
