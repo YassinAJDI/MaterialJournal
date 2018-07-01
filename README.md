@@ -32,3 +32,12 @@ Follow this steps if you want get a local copy of the project in your machine.
 You can now run the project in an Android Emulator or a real Android Device.
 
 Note : A sample debug apk is avaible in the
+
+## Authors
+
+* **Yassin AJDI**
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
