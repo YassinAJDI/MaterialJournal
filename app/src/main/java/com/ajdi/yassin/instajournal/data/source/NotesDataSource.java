@@ -1,15 +1,17 @@
 package com.ajdi.yassin.instajournal.data.source;
 
-import androidx.annotation.NonNull;
-
 import com.ajdi.yassin.instajournal.data.model.Note;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 /**
  * Main entry point for accessing tasks data.
  */
 public interface NotesDataSource {
+
+    void starNote(@NonNull Note note);
 
     interface LoadNotesCallback {
 

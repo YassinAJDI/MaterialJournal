@@ -1,13 +1,13 @@
 package com.ajdi.yassin.instajournal.data.source;
 
-import androidx.annotation.NonNull;
-
 import com.ajdi.yassin.instajournal.data.model.Note;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import androidx.annotation.NonNull;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -41,6 +41,20 @@ public class NotesRepository implements NotesDataSource {
             }
         }
         return INSTANCE;
+    }
+
+    @Override
+    public void starNote(@NonNull Note note) {
+        checkNotNull(note);
+        mNotesLocalDataSource.starNote(note);
+
+        Note staredNote = new Note(note, true);
+
+        // Do in memory cache update to keep the app UI up to date
+        if (mCachedNotes == null) {
+            mCachedNotes = new LinkedHashMap<>();
+        }
+        mCachedNotes.put(note.getId(), staredNote);
     }
 
     @Override

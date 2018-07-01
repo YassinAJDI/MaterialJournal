@@ -1,12 +1,11 @@
 package com.ajdi.yassin.instajournal.data.source.local;
 
-import androidx.annotation.NonNull;
-
 import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.data.source.NotesDataSource;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import timber.log.Timber;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -34,6 +33,19 @@ public class NotesLocalDataSource implements NotesDataSource {
             }
         }
         return INSTANCE;
+    }
+
+    @Override
+    public void starNote(final Note note) {
+        checkNotNull(note);
+        Timber.d("star note");
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mNotesDao.updateNote(note);
+            }
+        }).start();
     }
 
     @Override

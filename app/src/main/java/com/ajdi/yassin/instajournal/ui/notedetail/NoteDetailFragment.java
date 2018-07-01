@@ -3,6 +3,8 @@ package com.ajdi.yassin.instajournal.ui.notedetail;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import com.ajdi.yassin.instajournal.utils.GlideApp;
 import com.ajdi.yassin.instajournal.utils.UiUtils;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -63,14 +66,25 @@ public class NoteDetailFragment extends Fragment {
 
         setupFab();
 
-        setupSnackbar();
-
         mNoteDetailViewModel.getNoteLoadedCommand().observeEvent(this, new Observer<Void>() {
             @Override
             public void onChanged(Void aVoid) {
                 loadData();
             }
         });
+
+        mNoteDetailViewModel.getmNoteStaredCommand().observeEvent(this, new Observer<Void>() {
+            @Override
+            public void onChanged(Void aVoid) {
+                recreateOptionsMenu();
+                showMessage("Note added to your favorites successfully");
+            }
+        });
+    }
+
+    private void recreateOptionsMenu() {
+        if (getActivity() != null)
+            getActivity().invalidateOptionsMenu();
     }
 
     private void loadData() {
@@ -99,6 +113,20 @@ public class NoteDetailFragment extends Fragment {
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+//        MenuItem menuItem = menu.findItem(R.id.action_starred);
+//        if (menuItem != null && mNoteDetailViewModel.note.get() != null) {
+//            if (mNoteDetailViewModel.note.get().isStar())
+//                menuItem.setTitle("Delete from favorites").setIcon(R.drawable.ic_star_black_24dp);
+//            else
+//                menuItem.setTitle("Add to favorites").setIcon(R.drawable.ic_star_border_black_24dp);
+//
+//            UiUtils.tintMenuIcon(getActivity(), menuItem, R.color.md_white_1000);
+//        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_share: {
@@ -107,14 +135,15 @@ public class NoteDetailFragment extends Fragment {
                 UiUtils.fireShareIntent(getActivity(), title, text);
                 return true;
             }
-//            case R.id.action_favourite: {
-//                if (!mFeed.isFavorite()) {
-//                    mPresenter.favoriteFeed();
-//                } else {
-//                    mPresenter.unfavoriteFeed();
-//                }
-//                return true;
-//            }
+            case R.id.action_star: {
+
+                if (!mNoteDetailViewModel.note.get().isStar()) {
+                    mNoteDetailViewModel.starNote();
+                } else {
+                    //mPresenter.unfavoriteFeed();
+                }
+                return true;
+            }
 //            case R.id.action_copy_link: {
 //                mPresenter.copyLink();
 //                return true;
@@ -136,8 +165,8 @@ public class NoteDetailFragment extends Fragment {
         });
     }
 
-    private void setupSnackbar() {
-
+    private void showMessage(String message) {
+        if (getView() != null)
+            Snackbar.make(getView(), message, Snackbar.LENGTH_SHORT).show();
     }
-
 }

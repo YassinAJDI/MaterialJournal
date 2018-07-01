@@ -9,7 +9,7 @@
         app:showAsAction="always"/>
     <item
         android:id="@+id/action_star"
-        android:icon="@drawable/twotone_star_black_24"
+        android:icon="@drawable/ic_star_black_24dp"
         android:title="@string/nav_favorites"
         app:showAsAction="always"/>
     <item

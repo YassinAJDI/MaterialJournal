@@ -26,7 +26,7 @@ public class AddEditNoteViewModel extends AndroidViewModel implements NotesDataS
 
     public final ObservableField<String> content = new ObservableField<>();
 
-    public final ObservableField<Long> date = new ObservableField<>();
+    public final ObservableField<Note> note = new ObservableField<>();
 
     public final ObservableBoolean dataLoading = new ObservableBoolean(false);
 
@@ -73,7 +73,6 @@ public class AddEditNoteViewModel extends AndroidViewModel implements NotesDataS
     public void onNoteLoaded(Note note) {
         title.set(note.getTitle());
         content.set(note.getContent());
-        date.set(note.getDate());
         dataLoading.set(false);
         mIsDataLoaded = true;
     }
@@ -94,7 +93,8 @@ public class AddEditNoteViewModel extends AndroidViewModel implements NotesDataS
         if (isNewNote() || mNoteId == null) {
             createNote(note);
         } else {
-            note = new Note(Integer.parseInt(mNoteId), title.get(), content.get(), date.get());
+            note = new Note(Integer.parseInt(mNoteId), title.get(), content.get(), note.getDate(),
+                    note.isStar(), note.isTrash());
             updateNote(note);
         }
     }

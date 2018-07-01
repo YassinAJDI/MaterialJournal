@@ -1,11 +1,12 @@
 package com.ajdi.yassin.instajournal.data.source.local;
 
-import androidx.room.Database;
-import androidx.room.Room;
-import androidx.room.RoomDatabase;
 import android.content.Context;
 
 import com.ajdi.yassin.instajournal.data.model.Note;
+
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
 
 /**
  * The Room Database that contains the note table.

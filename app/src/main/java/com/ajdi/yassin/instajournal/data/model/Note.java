@@ -3,6 +3,7 @@ package com.ajdi.yassin.instajournal.data.model;
 import com.google.common.base.Strings;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -25,14 +26,22 @@ public class Note {
     @ColumnInfo(name = "date")
     private long mDate;
 
+    @ColumnInfo(name = "star")
+    private boolean isStar;
+
+    @ColumnInfo(name = "trash")
+    private boolean isTrash;
+
     /**
      * This constructor is used by Room.
      */
-    public Note(int id, String title, String content, long date) {
+    public Note(int id, String title, String content, long date, boolean isStar, boolean isTrash) {
         this.mId = id;
         this.mTitle = title;
         this.mContent = content;
         this.mDate = date;
+        this.isStar = isStar;
+        this.isTrash = isTrash;
     }
 
     @Ignore
@@ -40,6 +49,19 @@ public class Note {
         this.mTitle = title;
         this.mContent = content;
         this.mDate = date;
+    }
+
+    /**
+     * Use this constructor to specify a stared Note if the note already has an id (copy of
+     * another note).
+     */
+    @Ignore
+    public Note(@Nullable Note note, boolean isStar) {
+        mId = note.mId;
+        mTitle = note.mTitle;
+        mContent = note.mContent;
+        mDate = note.getDate();
+        this.isStar = isStar;
     }
 
     public int getId() {
@@ -68,6 +90,22 @@ public class Note {
 
     public String toString() {
         return "{Note title=" + mTitle + " content=" + mContent + "}";
+    }
+
+    public boolean isStar() {
+        return isStar;
+    }
+
+    public void setStar(boolean star) {
+        isStar = star;
+    }
+
+    public boolean isTrash() {
+        return isTrash;
+    }
+
+    public void setTrash(boolean trash) {
+        isTrash = trash;
     }
 
     public boolean isEmpty() {

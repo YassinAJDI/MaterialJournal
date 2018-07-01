@@ -22,6 +22,8 @@ public class NoteDetailViewModel extends AndroidViewModel implements NotesDataSo
 
     private final SingleLiveEvent<Void> mNoteLoadedCommand = new SingleLiveEvent<>();
 
+    private final SingleLiveEvent<Void> mNoteStaredCommand = new SingleLiveEvent<>();
+
     private final NotesRepository mNotesRepository;
 
     private final Context mContext;
@@ -79,5 +81,14 @@ public class NoteDetailViewModel extends AndroidViewModel implements NotesDataSo
 
     public SingleLiveEvent<Void> getNoteLoadedCommand() {
         return mNoteLoadedCommand;
+    }
+
+    public SingleLiveEvent<Void> getmNoteStaredCommand() {
+        return mNoteStaredCommand;
+    }
+
+    public void starNote() {
+        mNotesRepository.starNote(note.get());
+        mNoteStaredCommand.call();
     }
 }
