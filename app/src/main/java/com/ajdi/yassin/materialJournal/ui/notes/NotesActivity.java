@@ -84,7 +84,6 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
             finish();
             return;
         }
-
     }
 
     private void setUpBottomDrawer() {
@@ -138,6 +137,10 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
 
         return true;
     }
+
+
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

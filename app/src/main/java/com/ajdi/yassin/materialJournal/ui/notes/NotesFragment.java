@@ -3,18 +3,24 @@ package com.ajdi.yassin.materialJournal.ui.notes;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.ajdi.yassin.materialJournal.R;
 import com.ajdi.yassin.materialJournal.data.model.Note;
 import com.ajdi.yassin.materialJournal.databinding.FragmentNotesBinding;
+import com.ajdi.yassin.materialJournal.ui.login.AuthUiActivity;
 import com.ajdi.yassin.materialJournal.utils.SnackbarMessage;
 import com.ajdi.yassin.materialJournal.utils.SnackbarUtils;
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
@@ -53,7 +59,32 @@ public class NotesFragment extends Fragment {
         mFragmentNotesBinding.setViewmodel(mNotesViewModel);
         //mFragmentNotesBinding.setLifecycleOwner(this);
 
+        setHasOptionsMenu(true);
+
         return mFragmentNotesBinding.getRoot();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_logout){
+            Timber.d("log out");
+            AuthUI.getInstance()
+                    .signOut(getActivity())
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                startActivity(AuthUiActivity.createIntent(getActivity()));
+                                getActivity().finish();
+                            } else {
+                               // Log.w(TAG, "signOut:failure", task.getException());
+                                //showSnackbar(R.string.sign_out_failed);
+                            }
+                        }
+                    });
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

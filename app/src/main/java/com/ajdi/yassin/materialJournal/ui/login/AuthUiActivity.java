@@ -1,5 +1,6 @@
 package com.ajdi.yassin.materialJournal.ui.login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -94,5 +95,9 @@ public class AuthUiActivity extends AppCompatActivity {
 
     private void startSignedInActivity(IdpResponse response) {
         startActivity(NotesActivity.createIntent(this, response));
+    }
+
+    public static Intent createIntent(Context context) {
+        return new Intent(context, AuthUiActivity.class);
     }
 }

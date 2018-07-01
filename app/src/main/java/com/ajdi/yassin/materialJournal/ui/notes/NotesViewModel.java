@@ -82,7 +82,7 @@ public class NotesViewModel extends AndroidViewModel {
 
             @Override
             public void onDataNotAvailable() {
-
+                dataLoading.set(false);
             }
         });
 

@@ -16,6 +16,8 @@ import com.ajdi.yassin.materialJournal.utils.UiUtils;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -99,14 +101,15 @@ public class NoteDetailFragment extends Fragment {
     }
 
     private void loadData() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         // show user image
         GlideApp.with(this)
-                .load("https://lh3.googleusercontent.com/-xT9nbe3isBs/WxNLkWcpSHI/AAAAAAAAAic/pulWUZTPWooItSTuxghGgjt9dhV2kzf9gCEwYBhgL/w140-h140-p/4711f20662911d1ff51216d692c1354025357acf_hq.jpg")
+                .load(user.getPhotoUrl())
                 .apply(new RequestOptions().circleCrop())
                 .into(mBinding.imagePublisherIcon);
 
-        mBinding.textPublisherName.setText("Yassin AJDI");
+        mBinding.textPublisherName.setText(user.getDisplayName());
 
         // show note image
         //String image = mNoteDetailViewModel.note.get().getImage();

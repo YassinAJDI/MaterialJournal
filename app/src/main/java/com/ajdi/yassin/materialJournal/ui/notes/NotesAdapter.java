@@ -15,6 +15,8 @@ import com.ajdi.yassin.materialJournal.utils.UiUtils;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
@@ -31,10 +33,13 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private Context mContext;
 
+    FirebaseUser mUser;
+
     public NotesAdapter(Context context, List<Note> notes, NotesViewModel notesViewModel) {
         mNotesViewModel = notesViewModel;
         mContext = context;
         replaceData(notes);
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
     }
 
     @NonNull
@@ -71,12 +76,12 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 .into(noteViewHolder.binding.imageNote);
 
         GlideApp.with(mContext)
-                .load("https://lh3.googleusercontent.com/-xT9nbe3isBs/WxNLkWcpSHI/AAAAAAAAAic/pulWUZTPWooItSTuxghGgjt9dhV2kzf9gCEwYBhgL/w140-h140-p/4711f20662911d1ff51216d692c1354025357acf_hq.jpg")
+                .load(mUser.getPhotoUrl())
                 .apply(new RequestOptions().circleCrop())
                 .into(noteViewHolder.binding.imageUserIcon);
 
         String timeAgo = (String) TimeUtils.getTimeAgo(note.getDate(), mContext);
-        noteViewHolder.binding.textPublisherName.setText("Yassin AJDI");
+        noteViewHolder.binding.textPublisherName.setText(mUser.getDisplayName());
 
         noteViewHolder.binding.textTime.setText(timeAgo);
 
