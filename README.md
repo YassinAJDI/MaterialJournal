@@ -33,7 +33,7 @@ Follow this steps if you want get a local copy of the project in your machine.
 
 You can now run the project in an Android Emulator or a real Android Device.
 
-Note : A sample debug apk is avaible in the
+Note : A sample release apk is avaible [Here](app/release/app-release.apk) 
 
 ## Built With
 
