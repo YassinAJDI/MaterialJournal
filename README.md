@@ -1,3 +1,5 @@
+<img src="https://api.codeclimate.com/v1/badges/fd0e4471ce83727e2a97/maintainability" /> [https://codeclimate.com/github/YassinAJDI/MaterialJournal/maintainability]
+
 # MaterialJournal
 A journal application where in users can pen down their thoughts and feelings submitted for the "7 Days of code" challlenge for the GoogleAfiricaScholarship Challenge offered by Udacity and powered by Andela Learning Community (ALC) learners.
 
