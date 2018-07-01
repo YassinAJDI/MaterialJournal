@@ -33,6 +33,14 @@ You can now run the project in an Android Emulator or a real Android Device.
 
 Note : A sample debug apk is avaible in the
 
+## Built With
+
+* [Android support Library](https://developer.android.com/topic/libraries/support-library/revisions) - Android support Library 28
+* [Room Database](https://developer.android.com/topic/libraries/architecture/room) - The Room persistence library for Android.
+* [Glide](https://github.com/bumptech/glide) - An image loading and caching library for Android focused on smooth scrolling 
+* [Firebase](https://firebase.google.com/) - For authentication and data persisntence.
+
+
 ## Authors
 
 * **Yassin AJDI**
