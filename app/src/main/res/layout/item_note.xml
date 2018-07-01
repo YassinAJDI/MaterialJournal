@@ -93,7 +93,6 @@
                     style="@style/CardArticleItemText.Time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(note.date)}"
                     tools:text="10 mins ago" />
             </LinearLayout>
 

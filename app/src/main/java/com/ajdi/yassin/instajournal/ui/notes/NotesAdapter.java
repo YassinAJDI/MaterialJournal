@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import com.ajdi.yassin.instajournal.data.model.Note;
 import com.ajdi.yassin.instajournal.databinding.ItemNoteBinding;
 import com.ajdi.yassin.instajournal.utils.GlideApp;
+import com.ajdi.yassin.instajournal.utils.TimeUtils;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
@@ -44,7 +45,6 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Timber.d("Binding item at position: " + position);
         Note note = mNotes.get(position);
         Timber.d(note.toString());
 
@@ -70,6 +70,10 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 .apply(new RequestOptions().circleCrop())
                 .into(noteViewHolder.binding.imageUserIcon);
 
+        String timeAgo = (String) TimeUtils.getTimeAgo(note.getDate(), mContext);
+        Timber.d(timeAgo);
+        noteViewHolder.binding.textTime.setText(timeAgo);
+
         noteViewHolder.binding.executePendingBindings();
     }
 
@@ -79,7 +83,6 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     public void replaceData(List<Note> notes) {
-        Timber.d("Data replaced total: " + notes.size());
         mNotes = notes;
         notifyDataSetChanged();
     }
