@@ -36,17 +36,15 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/edit_add_note_title"
-                    style="@style/Widget.TextInputLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Note Title">
+                    android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
                         android:maxLines="1"
-                        android:hint="Compose your note:"
+                        android:hint="Note title"
                         android:text="@={viewmodel.title}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,20 +54,11 @@
                     android:layout_height="wrap_content"
                     android:text="Pick an image" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/cancel_button"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginRight="12dp"
-                    android:text="pick an image" />
-
                 <ImageView
                     android:id="@+id/image_note"
-                    android:layout_width="match_parent"
+                    android:layout_width="100dp"
                     android:layout_height="100dp"
-                    app:srcCompat="@android:color/darker_gray" />
+                    android:background="@color/md_grey_200" />
 
                 <EditText
                     android:id="@+id/edit_add_note_content"
