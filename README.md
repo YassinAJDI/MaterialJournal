@@ -1,19 +1,14 @@
 # MaterialJournal
 A journal application where in users can pen down their thoughts and feelings submitted for the "7 Days of code" challlenge for the GoogleAfiricaScholarship Challenge offered by Udacity and powered by Andela Learning Community (ALC) learners.
 
-[![CircleCI](https://circleci.com/gh/po10cio/JournalApp.svg?style=svg)](https://circleci.com/gh/po10cio/JournalApp)
-[![codecov](https://codecov.io/gh/po10cio/JournalApp/branch/master/graph/badge.svg)](https://codecov.io/gh/po10cio/JournalApp)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8ceda2e1681c4b8aa9b44c5da15ddb53)](https://www.codacy.com/app/po10cio/JournalApp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=po10cio/JournalApp&amp;utm_campaign=Badge_Grade)
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-```
-Android Studio >= 3.1.3
-```
+* Android Studio 3.2 beta 2
+* Java JDK
 
 ### Installing
 
@@ -21,7 +16,7 @@ Follow this steps if you want get a local copy of the project in your machine.
 
 ##### 1. Clone or fork the repository by running the cammand below.
 	
-	git clone https://github.com/po10cio/JournalApp.git
+	git clone https://github.com/YassinAJDI/MaterialJournal.git
 
 ##### 2. Import the project in AndroidStudio.
 1. In Android Studio, go to File -> New -> Import project
@@ -36,4 +31,4 @@ Follow this steps if you want get a local copy of the project in your machine.
 
 You can now run the project in an Android Emulator or a real Android Device.
 
-Note : A sample debug apk is avaible in the [Here](apk/app-debug.apk) 
+Note : A sample debug apk is avaible in the
