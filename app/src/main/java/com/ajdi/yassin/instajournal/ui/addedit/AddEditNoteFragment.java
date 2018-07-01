@@ -2,6 +2,7 @@ package com.ajdi.yassin.instajournal.ui.addedit;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.ajdi.yassin.instajournal.R;
 import com.ajdi.yassin.instajournal.databinding.FragmentAddeditNoteBinding;
+import com.ajdi.yassin.instajournal.utils.GlideApp;
 import com.ajdi.yassin.instajournal.utils.SnackbarMessage;
 import com.ajdi.yassin.instajournal.utils.SnackbarUtils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -86,14 +88,14 @@ public class AddEditNoteFragment extends Fragment {
         Timber.d("onActivityResult");
         if (requestCode == PICK_PHOTO_CODE && resultCode == RESULT_OK && data != null) {
 
-//            Uri photoUri = data.getData();
+            Uri photoUri = data.getData();
 //            Timber.d("Selectted image Uri: " + photoUri.toString());
 //            String uriToString = ImageUtils.getPathFromURI(getActivity(), photoUri);
 //            mViewModel.image.set(uriToString);
 //            Timber.d("Selectted image String Uri: " + uriToString);
-//            GlideApp.with(this)
-//                    .load(uriToString)
-//                    .into(mNotebinding.imageNote);
+           GlideApp.with(this)
+                   .load(photoUri)
+                    .into(mNotebinding.imageNote);
         }
     }
 
