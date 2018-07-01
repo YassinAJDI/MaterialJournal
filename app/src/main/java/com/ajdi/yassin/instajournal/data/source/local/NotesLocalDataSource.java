@@ -49,6 +49,19 @@ public class NotesLocalDataSource implements NotesDataSource {
     }
 
     @Override
+    public void unstarNote(final Note note) {
+        checkNotNull(note);
+        Timber.d("unstar note");
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mNotesDao.updateNote(note);
+            }
+        }).start();
+    }
+
+    @Override
     public void getNotes(@NonNull final LoadNotesCallback callback) {
 
         new Thread(new Runnable() {

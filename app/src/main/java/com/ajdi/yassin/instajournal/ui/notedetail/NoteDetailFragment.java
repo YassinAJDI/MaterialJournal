@@ -81,6 +81,14 @@ public class NoteDetailFragment extends Fragment {
                 showMessage("Note added to your favorites successfully");
             }
         });
+
+        mNoteDetailViewModel.getmNoteUnstaredCommand().observeEvent(this, new Observer<Void>() {
+            @Override
+            public void onChanged(Void aVoid) {
+                recreateOptionsMenu();
+                showMessage("Note removed from your favorites successfully");
+            }
+        });
     }
 
     private void recreateOptionsMenu() {
@@ -144,7 +152,7 @@ public class NoteDetailFragment extends Fragment {
                     Timber.d("isStar: " + mNoteDetailViewModel.note.get().isStar());
                     mNoteDetailViewModel.starNote();
                 } else {
-                    //mPresenter.unfavoriteFeed();
+                    mNoteDetailViewModel.unstarNote();
                 }
                 return true;
             }

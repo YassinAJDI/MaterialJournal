@@ -13,6 +13,8 @@ public interface NotesDataSource {
 
     void starNote(@NonNull Note note);
 
+    void unstarNote(@NonNull Note note);
+
     interface LoadNotesCallback {
 
         void onNotesLoaded(List<Note> notes);

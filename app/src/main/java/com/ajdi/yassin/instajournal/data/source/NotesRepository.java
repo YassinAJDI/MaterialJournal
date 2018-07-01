@@ -58,6 +58,20 @@ public class NotesRepository implements NotesDataSource {
     }
 
     @Override
+    public void unstarNote(Note note) {
+        checkNotNull(note);
+        mNotesLocalDataSource.unstarNote(note);
+
+        Note unstaredNote = new Note(note, false);
+
+        // Do in memory cache update to keep the app UI up to date
+        if (mCachedNotes == null) {
+            mCachedNotes = new LinkedHashMap<>();
+        }
+        mCachedNotes.put(note.getId(), unstaredNote);
+    }
+
+    @Override
     public void getNotes(@NonNull final LoadNotesCallback callback) {
         checkNotNull(callback);
 
