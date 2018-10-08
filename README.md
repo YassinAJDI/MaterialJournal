@@ -4,7 +4,10 @@
 	A journal application where in users can pen down their thoughts and feelings submitted for the "7 Days of code" challlenge for 	the GoogleAfiricaScholarship Challenge offered by Udacity and powered by Andela Learning Community (ALC) learners.
 </h4>
 <p align="center">
-	[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](./LICENSE)
+<a href="./LICENSE">
+	<img src="https://img.shields.io/github/license/mashape/apistatus.svg" />
+</a>
+<a class="badge-align" href="https://www.codacy.com/app/YassinAJDI/MaterialJournal?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=YassinAJDI/MaterialJournal&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/8483a7a6743b45ceb773a0b2b635e2cf"/></a>
 <a href="https://codeclimate.com/github/YassinAJDI/MaterialJournal/maintainability">
 	<img src="https://api.codeclimate.com/v1/badges/fd0e4471ce83727e2a97/maintainability" />
 </a>
