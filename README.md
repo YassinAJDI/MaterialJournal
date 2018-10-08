@@ -1,7 +1,15 @@
-<img src="https://api.codeclimate.com/v1/badges/fd0e4471ce83727e2a97/maintainability" /> [https://codeclimate.com/github/YassinAJDI/MaterialJournal/maintainability]
 
-# MaterialJournal
-A journal application where in users can pen down their thoughts and feelings submitted for the "7 Days of code" challlenge for the GoogleAfiricaScholarship Challenge offered by Udacity and powered by Andela Learning Community (ALC) learners.
+<h1 align="center">MaterialJournal</h1>
+
+<p align="center">
+	<a href="https://codeclimate.com/github/YassinAJDI/MaterialJournal/maintainability">
+		<img 	src="https://api.codeclimate.com/v1/badges/fd0e4471ce83727e2a97/maintainability" />
+	</a>
+</p>
+
+<h5 align="center">
+	A journal application where in users can pen down their thoughts and feelings submitted for the "7 Days of code" challlenge for 	the GoogleAfiricaScholarship Challenge offered by Udacity and powered by Andela Learning Community (ALC) learners.
+</h5>
 
 ## Getting Started
 
@@ -9,7 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-* Android Studio 3.2 beta 2
+* Android Studio 3.2
 * Java JDK
 
 ### Installing
@@ -50,4 +58,26 @@ Note : A sample release apk is avaible [Here](app/release/app-release.apk)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+```
+MIT License
+
+Copyright (c) 2018 Yassin Ajdi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
