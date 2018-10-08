@@ -54,7 +54,7 @@ Note : A sample release apk is avaible [Here](app/release/app-release.apk)
 
 ## Authors
 
-*	**Yassin AJDI**
+*  **Yassin AJDI**
 
 
 ## License
