@@ -26,12 +26,12 @@ Follow this steps if you want get a local copy of the project in your machine.
 	git clone https://github.com/YassinAJDI/MaterialJournal.git
 
 #### 2. Import the project in AndroidStudio
- 1. In Android Studio, go to File -> New -> Import project
-2. Follew the dialog wizard to choose the folder where you cloned the project and click on open.
+1.  In Android Studio, go to File -> New -> Import project
+2.  Follew the dialog wizard to choose the folder where you cloned the project and click on open.
 3. Androidstudio imports the projects and builds it for you. 
 
 #### 3. Add Firebase config
- 1. Go to [Firebase](https://console.firebase.google.com/) and click on + Add project to create a new project
+1.  Go to [Firebase](https://console.firebase.google.com/) and click on + Add project to create a new project
 2. Add the SHA1 fingerprint of your machine after you have created the project
 3. Download google_service.json file and add to the /app folder of the project
 4. Clean -> Build the project and ensure that every thing works fine 
@@ -47,7 +47,7 @@ Note : A sample release apk is avaible [Here](app/release/app-release.apk)
 * [Firebase](https://firebase.google.com/) - For authentication and data persisntence.
 
 ## Authors
-  * **Yassin AJDI**
+*   **Yassin AJDI**
 
 ## License
 ```
