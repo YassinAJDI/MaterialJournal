@@ -97,8 +97,8 @@ public class NotesActivity extends AppCompatActivity implements NotesNavigator, 
                 bottomDrawerBehavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
             }
         });
-        mBar.setNavigationIcon(R.drawable.ic_menu_black_24dp);
-        //bar.replaceMenu(R.menu.demo_primary);
+        //mBar.setNavigationIcon(R.drawable.ic_menu_black_24dp);
+        //mBar.replaceMenu(R.menu.demo_primary);
     }
 
     private void setupBottomBar() {

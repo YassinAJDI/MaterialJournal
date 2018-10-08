@@ -133,7 +133,6 @@ public class NotesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         notifyDataSetChanged();
     }
 
-
     /**
      * The {@link NoteViewHolder} class.
      * Provides a binding reference to each view in the note cardView.

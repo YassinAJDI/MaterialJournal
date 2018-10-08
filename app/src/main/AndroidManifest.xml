@@ -17,7 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.ajdi.yassin.materialJournal.MainActivity" />
         <activity android:name="com.ajdi.yassin.materialJournal.ui.notes.NotesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +31,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name="com.ajdi.yassin.materialJournal.ui.login.AuthUiActivity"></activity>
+        <activity android:name="com.ajdi.yassin.materialJournal.ui.login.AuthUiActivity" />
     </application>
 
 </manifest>

@@ -66,7 +66,7 @@ public class NotesFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_logout){
+        if (item.getItemId() == R.id.action_logout) {
             Timber.d("log out");
             AuthUI.getInstance()
                     .signOut(getActivity())
@@ -77,7 +77,7 @@ public class NotesFragment extends Fragment {
                                 startActivity(AuthUiActivity.createIntent(getActivity()));
                                 getActivity().finish();
                             } else {
-                               // Log.w(TAG, "signOut:failure", task.getException());
+                                // Log.w(TAG, "signOut:failure", task.getException());
                                 //showSnackbar(R.string.sign_out_failed);
                             }
                         }
@@ -109,8 +109,7 @@ public class NotesFragment extends Fragment {
     private void setupListAdapter() {
         Timber.d("setupListAdapter");
         RecyclerView recyclerView = mFragmentNotesBinding.recyclerNoteList;
-        recyclerView.setLayoutManager(new LinearLayoutManager(
-                getActivity(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mNotesAdapter = new NotesAdapter(getActivity(), new ArrayList<Note>(0), mNotesViewModel);
 

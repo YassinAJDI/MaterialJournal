@@ -94,7 +94,7 @@
                 android:id="@+id/card_action_share_button"
                 style="@style/CardArticleActionIcon"
                 android:layout_marginTop="8dp"
-                android:src="@drawable/ic_share_black_24dp"
+                app:srcCompat="@drawable/ic_share_black_24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_note" />
