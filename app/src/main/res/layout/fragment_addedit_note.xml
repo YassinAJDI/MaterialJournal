@@ -10,7 +10,7 @@
 
         <variable
             name="viewmodel"
-            type="com.ajdi.yassin.materialJournal.ui.addedit.AddEditNoteViewModel" />
+            type="com.ajdi.yassin.materialjournal.ui.addedit.AddEditNoteViewModel" />
     </data>
 
 

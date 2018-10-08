@@ -9,7 +9,7 @@
 
         <variable
             name="viewmodel"
-            type="com.ajdi.yassin.materialJournal.ui.notes.NotesViewModel" />
+            type="com.ajdi.yassin.materialjournal.ui.notes.NotesViewModel" />
 
     </data>
 

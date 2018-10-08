@@ -10,7 +10,7 @@
 
         <variable
             name="viewmodel"
-            type="com.ajdi.yassin.materialJournal.ui.notedetail.NoteDetailViewModel" />
+            type="com.ajdi.yassin.materialjournal.ui.notedetail.NoteDetailViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
