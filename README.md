@@ -1,18 +1,15 @@
 
 <h1 align="center">MaterialJournal</h1>
-
+<h4 align="center">
+	A journal application where in users can pen down their thoughts and feelings submitted for the "7 Days of code" challlenge for 	the GoogleAfiricaScholarship Challenge offered by Udacity and powered by Andela Learning Community (ALC) learners.
+</h4>
 <p align="center">
 	<a href="https://codeclimate.com/github/YassinAJDI/MaterialJournal/maintainability">
 		<img 	src="https://api.codeclimate.com/v1/badges/fd0e4471ce83727e2a97/maintainability" />
 	</a>
 </p>
 
-<h5 align="center">
-	A journal application where in users can pen down their thoughts and feelings submitted for the "7 Days of code" challlenge for 	the GoogleAfiricaScholarship Challenge offered by Udacity and powered by Andela Learning Community (ALC) learners.
-</h5>
-
 ## Getting Started
-
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
