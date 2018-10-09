@@ -1,7 +1,4 @@
 <h1 align="center">MaterialJournal</h1>
-<h4 align="center">
-	A journal application where in users can pen down their thoughts and feelings submitted for the "7 Days of code" challlenge for 	the GoogleAfiricaScholarship Challenge offered by Udacity and powered by Andela Learning Community (ALC) learners.
-</h4>
 <p align="center">
 <a href="./LICENSE">
 	<img src="https://img.shields.io/github/license/mashape/apistatus.svg" />
@@ -11,6 +8,10 @@
 	<img src="https://api.codeclimate.com/v1/badges/fd0e4471ce83727e2a97/maintainability" />
 </a>
 </p>
+
+<h4 align="center">
+	A journal application where in users can pen down their thoughts and feelings submitted for the "7 Days of code" challlenge for 	the GoogleAfiricaScholarship Challenge offered by Udacity and powered by Andela Learning Community (ALC) learners.
+</h4>
 
 <h2 align="center">Screenshots</h2>
 <h4 align="center">
